@@ -43,9 +43,6 @@ hacker
 2021-04-30 17:39
 
 ¿Cuál es la ruta completa y el nombre del último archivo abierto en el bloc de notas?
-
-
-¿Cuánto tiempo usó el sospechoso **el navegador Brave**? (En horas)
 ![Pasted image 20260705175013](../../Fotos/Pasted%20image%2020260705175013.png)
 ![Pasted image 20260705175001](../../Fotos/Pasted%20image%2020260705175001.png)
 C:\Users\JOHNDO~1\AppData\Local\Temp\7zO4FB31F24\accountNum
