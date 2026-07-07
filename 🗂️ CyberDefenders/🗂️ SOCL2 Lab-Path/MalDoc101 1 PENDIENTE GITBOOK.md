@@ -3,7 +3,7 @@
 - --
 En este documento hay macros que contienen múltiples flujos. Proporciona el número del más alto.
 
-![Pasted image 20260706161356](Fotos/Pasted%20image%2020260706161356.png)
+![Pasted image 20260706161356](Pasted%20image%2020260706161356.png)
 
 El comando permite identificar que el archivo corresponde a un **Documento Compuesto V2 (Compound Document V2)**, un formato basado en **CFB (Compound File Binary)**. Además, proporciona información relevante, como el sistema operativo con el que fue creado el documento, la fecha y hora de la última modificación y la versión de la aplicación utilizada. Estos metadatos pueden ser útiles para determinar el origen del archivo y detectar posibles modificaciones.
 
