@@ -13,6 +13,7 @@
 rev.php has been update
 
 /uploads
+
 ![Pasted image 20250202142057](../../Fotos/Pasted%20image%2020250202142057.png)
 
 ![Pasted image 20250202142154](../../Fotos/Pasted%20image%2020250202142154.png)
@@ -20,6 +21,7 @@ rev.php has been update
 ![Pasted image 20250202142239](../../Fotos/Pasted%20image%2020250202142239.png)
 
 `sudo env /bin/bash`
+
 ![Pasted image 20250202142342](../../Fotos/Pasted%20image%2020250202142342.png)
 
 

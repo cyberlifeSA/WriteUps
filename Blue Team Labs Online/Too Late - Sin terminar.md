@@ -2,8 +2,10 @@
 - Tags: #wireshark  #btlo #toolate_lab
 - --
 ¿Qué tipo de conexión se usa para conectarse al servidor C2, cuál es el puerto remoto?
+
 ![Pasted image 20260626134348](../Fotos/Pasted%20image%2020260626134348.png)
-tcp. 7010
+
+**Respuesta:** tcp. 7010
 
 ¿Qué es el ejecutable generado por el atacante para mantener la conexión?
 

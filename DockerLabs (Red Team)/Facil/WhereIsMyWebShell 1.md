@@ -12,6 +12,7 @@
 
 `wfuzz -c --hl=0 -t 200 -w /usr/share/dict/wordlist-probable.txt -u "http://172.17.0.2/shell.php?FUZZ=id"`
 - *Este diccionario es para buscar parámetros para ejecutar comandos remotos en una webshell*
+
 ![Pasted image 20250202164052](../../Fotos/Pasted%20image%2020250202164052.png)
 
 ![Pasted image 20250202164134](../../Fotos/Pasted%20image%2020250202164134.png)

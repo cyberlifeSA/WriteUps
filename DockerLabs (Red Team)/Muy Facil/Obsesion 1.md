@@ -20,6 +20,7 @@ sudo -l
 con env no deja hacer el escalado
 
 `sudo vim -c ':!/bin/sh'`
+
 ![Pasted image 20250117231339](../../Fotos/Pasted%20image%2020250117231339.png)
 
 

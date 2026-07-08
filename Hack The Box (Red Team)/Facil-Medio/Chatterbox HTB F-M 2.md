@@ -15,14 +15,18 @@
 ----
 
 https://www.youtube.com/watch?v=3KWlOqSREic&ab_channel=JulioUre%C3%B1a%28plaintext%29
+
 https://www.youtube.com/watch?v=kwr3Xl-mN4A&t=613s&ab_channel=WhoamiSecurity
 
 bufferoverflow
 `nmap -p- --min-rate 5000 -sCV -n 10.10.10.79 -oN portScan`
+
 ![Pasted image 20241214193613](../../Fotos/Pasted%20image%2020241214193613.png)
+
 ![Pasted image 20241214193623](../../Fotos/Pasted%20image%2020241214193623.png)
 
 En este caso el script en metasploit no función asique tiraremos de python y msfvenom
+
 ![Pasted image 20241214200955](../../Fotos/Pasted%20image%2020241214200955.png)
 
 ![Pasted image 20241214201006](../../Fotos/Pasted%20image%2020241214201006.png)
@@ -144,6 +148,7 @@ sock.close()
 - Todos esos símbolos son bad chards cuando generamos la data no nos tira esos simbolos conflictivos con el script
 
 Copiamos la data generada para tenerla a mano y reemplazarlo en el exploit
+
 ![Pasted image 20241214203202](../../Fotos/Pasted%20image%2020241214203202.png)
 
 ![Pasted image 20241214203257](../../Fotos/Pasted%20image%2020241214203257.png)
@@ -151,9 +156,11 @@ Copiamos la data generada para tenerla a mano y reemplazarlo en el exploit
 ![Pasted image 20241214203322](../../Fotos/Pasted%20image%2020241214203322.png)
 
 Cambiamos el server address que es la ip de la maquina victima y el puerto respectivo por el cual corre achat el cual es claramente vulnerable
+
 ![Pasted image 20241214203433](../../Fotos/Pasted%20image%2020241214203433.png)
 
 `python2 exploit.py`
+
 ![Pasted image 20241214203846](../../Fotos/Pasted%20image%2020241214203846.png)
 
 `Maquina Vulnerada`
@@ -172,12 +179,15 @@ User Flag: c1a7debd2b45ae25fd6e2d9ea2a90abe
 
 Aquí vemos que en realidad el usuario chatterbox si tiene permisos sobre root,txt a pesar de tener acceso denegado
 `icacls (directorio o archivo)`
+
 ![Pasted image 20241215141812](../../Fotos/Pasted%20image%2020241215141812.png)
+
 Se supone que tenemos acceso de lectura pero igual nos lanza el permiso denegado.
 
 
 Podemos cambiar esto con icacls, a pesar que todo el contenido de el directorio Desktop tiene todos los permisos para todos los usuarios entramos en desktop y manualmente ingresamos el usuario alfred con el permiso :F
 `icacls root.txt /grant alfred:F`
+
 ![Pasted image 20241215151357](../../Fotos/Pasted%20image%2020241215151357.png)
 
 ![Pasted image 20241215151501](../../Fotos/Pasted%20image%2020241215151501.png)
@@ -190,4 +200,5 @@ Root Flag: 1cb39aa95d8e17de243add2a76bf4860
 
 `reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon"`
 Ver que credeciales hacen autologon, hay que ver el registro de windows
+
 ![Pasted image 20241215162646](../../Fotos/Pasted%20image%2020241215162646.png)

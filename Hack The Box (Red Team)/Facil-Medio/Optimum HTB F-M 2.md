@@ -16,6 +16,7 @@
 ---
 
 `nmap -p- --min-rate 5000 -sCV -n 10.10.10.8 -oN portScan`
+
 ![Pasted image 20241129222625](../../Fotos/Pasted%20image%2020241129222625.png)
 
 ![Pasted image 20241129223157](../../Fotos/Pasted%20image%2020241129223157.png)
@@ -25,7 +26,9 @@
  CVE_-2014-6287 httpfileserver 2.3 remote code execution
  
 ![Pasted image 20241129225227](../../Fotos/Pasted%20image%2020241129225227.png)
+
 ![Pasted image 20241129225332](../../Fotos/Pasted%20image%2020241129225332.png)
+
 ![Pasted image 20241129225340](../../Fotos/Pasted%20image%2020241129225340.png)
 
 ![Pasted image 20241130145140](../../Fotos/Pasted%20image%2020241130145140.png)
@@ -41,8 +44,11 @@ user flag : d4d0476a3d240d3b0f6c374e9d61fc28
 
 Posibilidades de escalada de privilegios utilizaremos un modulo de metasploit.
 En la sesión que tenemos abierta la mandaremos a background y abriremos otra consola de metasploit
+
 ![Pasted image 20241129230826](../../Fotos/Pasted%20image%2020241129230826.png)
+
 ![Pasted image 20241129230909](../../Fotos/Pasted%20image%2020241129230909.png)
+
 - No obtenemos nada por ahora.
 
 exploit(windows/local/ms16_032_secondary_logon_handle_privesc)
@@ -51,20 +57,27 @@ exploit(windows/local/ms16_032_secondary_logon_handle_privesc)
 ----
 
 ![Pasted image 20241129233924](../../Fotos/Pasted%20image%2020241129233924.png)
+
 CORRECCION 
+
 ![Pasted image 20241129234132](../../Fotos/Pasted%20image%2020241129234132.png)
+
 - Descargamos el .py
 
 ![Pasted image 20241129234237](../../Fotos/Pasted%20image%2020241129234237.png)
+
 - Ponemos la ip de maquina atacante
 
 -----
 
 `windows/local/ms16_032_secondary_logon_handle_privesc`
+
 ![Pasted image 20241130150332](../../Fotos/Pasted%20image%2020241130150332.png)
 
 ![Pasted image 20241130150721](../../Fotos/Pasted%20image%2020241130150721.png)
+
 ![Pasted image 20241130150805](../../Fotos/Pasted%20image%2020241130150805.png)
+
 ![Pasted image 20241130150901](../../Fotos/Pasted%20image%2020241130150901.png)
 
 root flag: b13df8e932a7deb474e9b9c52dcd26e5
@@ -77,8 +90,11 @@ La escalada d eprivilegios se podia hacer manualmente igualmente.
 
 Accede a la clave del registro donde se almacenan las credenciales: Usa el siguiente comando para leer la clave del registro relacionada con el inicio de sesión automático:
 `reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon"`
+
 ![Pasted image 20241130154100](../../Fotos/Pasted%20image%2020241130154100.png)
+
 ![Pasted image 20241130154415](../../Fotos/Pasted%20image%2020241130154415.png)
+
 - `AutoAdminLogon` (debería estar en `1` si el inicio de sesión automático está habilitado).
 - `DefaultUsername` (debería contener el nombre de usuario `kostas`).
 - `DefaultPassword` (contendrá la contraseña si está almacenada allí).

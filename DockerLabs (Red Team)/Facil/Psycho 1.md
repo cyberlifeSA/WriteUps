@@ -10,13 +10,16 @@
 ![Pasted image 20250208124840](../../Fotos/Pasted%20image%2020250208124840.png)
 
 `wfuzz -c --hw=169 -t 200 -w /usr/share/SecLists/Discovery/Web-Content/common.txt -u "http://172.17.0.2/index.php?FUZZ=/etc/passwd"`
+
 ![Pasted image 20250208130604](../../Fotos/Pasted%20image%2020250208130604.png)
 
 ![Pasted image 20250208130915](../../Fotos/Pasted%20image%2020250208130915.png)
+
 - vaxei
 - luisillo
 
 Enumeramos la id_rsa del usuario vaxei
+
 ![Pasted image 20250208131121](../../Fotos/Pasted%20image%2020250208131121.png)
 
 ![Pasted image 20250208131211](../../Fotos/Pasted%20image%2020250208131211.png)
@@ -73,6 +76,7 @@ aNrKPo4BygXUcJCAHRZ77etVNQY9VqdwvI5s0nrTexbHM9Rz6O8T+7qWgsg2DEcTv+dBUo
 ![Pasted image 20250208131622](../../Fotos/Pasted%20image%2020250208131622.png)
 
 `sudo -u luisillo /usr/bin/perl -e 'exec "/bin/bash";'`
+
 ![Pasted image 20250208131830](../../Fotos/Pasted%20image%2020250208131830.png)
 
 ![Pasted image 20250208131842](../../Fotos/Pasted%20image%2020250208131842.png)
@@ -80,6 +84,7 @@ aNrKPo4BygXUcJCAHRZ77etVNQY9VqdwvI5s0nrTexbHM9Rz6O8T+7qWgsg2DEcTv+dBUo
 ![Pasted image 20250208134044](../../Fotos/Pasted%20image%2020250208134044.png)
 
 Ejecutamos el script paw.py, hay que entender si como funciona hay que REPASAR ESTE PUNTO, una vez que creamos otro archivo extension python con algun comando lo que hacemos es ejecutar con python 3 el paw.py y lo que pusimos en el otro archivo python que creamos se ejecutara, deben estar en el mismo directorio en este caso es el /opt.
+
 ![Pasted image 20250208134129](../../Fotos/Pasted%20image%2020250208134129.png)
 
 ![Pasted image 20250208134237](../../Fotos/Pasted%20image%2020250208134237.png)

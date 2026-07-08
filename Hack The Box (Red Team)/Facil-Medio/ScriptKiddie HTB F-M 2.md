@@ -16,25 +16,39 @@
 ### Forma 1
 
 `nmap -p- --min-rate 5000 -n -sCV 10.10.10.226 -oN portScan`
+
 ![Pasted image 20241207151713](../../Fotos/Pasted%20image%2020241207151713.png)
 
 ![Pasted image 20241207151832](../../Fotos/Pasted%20image%2020241207151832.png)
+
 ![Pasted image 20241207151840](../../Fotos/Pasted%20image%2020241207151840.png)
 
 ![Pasted image 20241207152947](../../Fotos/Pasted%20image%2020241207152947.png)
+
 set LHOST tun0
+
 ![Pasted image 20241207155128](../../Fotos/Pasted%20image%2020241207155128.png)
+
 run
+
 ![Pasted image 20241207153104](../../Fotos/Pasted%20image%2020241207153104.png)
+
 genero el archivo
+
 ![Pasted image 20241207153317](../../Fotos/Pasted%20image%2020241207153317.png)
+
 ![Pasted image 20241207153341](../../Fotos/Pasted%20image%2020241207153341.png)
+
 cargamos
+
 ![Pasted image 20241207153612](../../Fotos/Pasted%20image%2020241207153612.png)
 
 ![Pasted image 20241207154012](../../Fotos/Pasted%20image%2020241207154012.png)
+
 Tratamiento
+
 ![Pasted image 20241207155512](../../Fotos/Pasted%20image%2020241207155512.png)
+
 ![Pasted image 20241207155836](../../Fotos/Pasted%20image%2020241207155836.png)
 
 `Maquina Vulnerada`
@@ -53,10 +67,11 @@ Nos ponemos en escucha una vez metamos la reverse shell en el archivo hackers no
 - Podemos usar metasploit con sudo
 
 ![Pasted image 20241207162353](../../Fotos/Pasted%20image%2020241207162353.png)
+
 ![Pasted image 20241207162430](../../Fotos/Pasted%20image%2020241207162430.png)
+
 user flag: c13a4c651adedf7ea8fb93491d2035b1
 root flag: 91a8f95178775e5ef64619088b2de350
-
 
 ----
 
