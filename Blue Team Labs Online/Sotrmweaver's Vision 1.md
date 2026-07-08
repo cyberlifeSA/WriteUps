@@ -2,29 +2,41 @@
 - Tags: #splunk #btlo #stormweavers_vision_lab
 - --
 
-*Identifica la dirección IP pública desde la que el atacante lanzó su ataque contra la aplicación web.*
+Identifica la dirección IP pública desde la que el atacante lanzó su ataque contra la aplicación web.
 (aqeui el campo **CsUriQuery** es muy util aunque no lo usamos porque muestra ejecuciones de comandos en uri)
+
 ![Pasted image 20260619130202](../Fotos/Pasted%20image%2020260619130202.png)
+
 Respuesta: 13.250.112.17
 
-*¿Cuál es el nombre del Azure App Service que fue inicialmente comprometido por el atacante?*
+¿Cuál es el nombre del Azure App Service que fue inicialmente comprometido por el atacante?
+
 ![Pasted image 20260619135608](../Fotos/Pasted%20image%2020260619135608.png)
+
 ![Pasted image 20260619135211](../Fotos/Pasted%20image%2020260619135211.png)
+
 Respuesta: snowpine-festival
 
-*El atacante explotó una vulnerabilidad en la aplicación web para ejecutar comandos del sistema. ¿Cuál es el PRIMER comando que ejecutó el atacante para confirmar que tenía capacidades de ejecución de comandos?*
+El atacante explotó una vulnerabilidad en la aplicación web para ejecutar comandos del sistema. ¿Cuál es el PRIMER comando que ejecutó el atacante para confirmar que tenía capacidades de ejecución de comandos?
+
 ![Pasted image 20260619140130](../Fotos/Pasted%20image%2020260619140130.png)
+
 Respuesta: ls
 
-*¿Qué ID de la técnica MITRE ATT&CK describe mejor el método de acceso inicial utilizado por el atacante en la aplicación web?*
+¿Qué ID de la técnica MITRE ATT&CK describe mejor el método de acceso inicial utilizado por el atacante en la aplicación web?
+
 ![Pasted image 20260619140235](../Fotos/Pasted%20image%2020260619140235.png)
+
 Respuesta: T1190
 
-*El atacante confirmó que la aplicación web estaba funcionando en Azure comprobando las variables de entorno. ¿Cuál es el nombre de la variable de entorno Azure que indica que la Identidad Gestionada está disponible?*
+El atacante confirmó que la aplicación web estaba funcionando en Azure comprobando las variables de entorno. ¿Cuál es el nombre de la variable de entorno Azure que indica que la Identidad Gestionada está disponible?
+
 ![Pasted image 20260619140856](../Fotos/Pasted%20image%2020260619140856.png)
+
 Respuesta: IDENTITY_ENDPOINT
 
-*El atacante extrajo DOS tokens de acceso diferentes del Azure Instance Metadata Service (IMDS) para acceder a distintos recursos de Azure. ¿Cuáles son las DOS diferentes audiencias de recursos (alcance) para estos tokens?*
+El atacante extrajo DOS tokens de acceso diferentes del Azure Instance Metadata Service (IMDS) para acceder a distintos recursos de Azure. ¿Cuáles son las DOS diferentes audiencias de recursos (alcance) para estos tokens?
+
 https://vault.azure.net, https://management.azure.com
 
 *El atacante volcó las credenciales de una cuenta de usuario iniciada en la VM. ¿Cuándo se accedió/extrajo por última vez las credenciales de acceso?*
