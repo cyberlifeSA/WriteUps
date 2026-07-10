@@ -12,20 +12,27 @@
 [GitHub - ChickenLoner/Awesome-Splunk-and-Elastic-SIEM-Practice-Labs: This repository dedicated to collect SIEM practice labs (Splunk and Elastic) from various cybersecurity training platforms](Splunk%20and%20Elastic)%20from%20various%20cybersecurity%20training%20platforms)%20from%20various%20cybersecurity%20training%20platforms)
 
 *Winlogbeat Fields* Son los **campos crudos/específicos de Windows**.
+
 [Winlogbeat fields | Beats](https://www.elastic.co/docs/reference/beats/winlogbeat/exported-fields-winlog)
 
 *ECS Fields* ECS **normaliza** Winlogbeat, Sysmon, Zeek, etc. Para que "hablen" el mismo idioma
+
 [ECS fields | Beats](https://www.elastic.co/docs/reference/beats/winlogbeat/exported-fields-ecs)
 
 *Zeek logs* Zeek = **visión de red**, no del host.
+
 [ Beats](https://www.elastic.co/docs/reference/beats/filebeat/exported-fields-zeek|Zeek (Bro) fields | Beats](Bro)%20fields%20)
 
 *System Monitor (Sysmon) logs* **telemetría profunda del host**.
+
 [Sysmon - Sysinternals | Microsoft Learn](https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon)
 
 *PowerShell logs Aquí detectas **PowerView, Mimikatz, IEX, EncodedCommand**.*
+
 [Hunting for Malicious PowerShell using Script Block Logging | Splunk](https://www.splunk.com/en_us/blog/security/hunting-for-malicious-powershell-using-script-block-logging.html)
+
 *Lateral Tool Transfer*
+
 [Lateral Tool Transfer, Technique T1570 - Enterprise | MITRE ATT&CK®](https://attack.mitre.org/techniques/T1570/)
 
 *Boot or logon autostart execution*
@@ -350,9 +357,11 @@ FILTRO
 ```shell-session
 event.code:1 AND process.parent.command_line:*invoice.bat*
 ```
+
 ![800](../Fotos/Pasted%20image%2020260108210333.png)
 
 `process.pid` Field Columna Agregada
+
 ![800](../Fotos/Pasted%20image%2020260108211036.png)
 
 FILTRO
@@ -363,7 +372,9 @@ process.pid:"9944" and process.name:"powershell.exe"
 Filtra eventos donde
 - El **PID del proceso** es **9944**
 - El **nombre del proceso** es **powershell.exe**  (siguiendo el mismo caso en el que estamos trabajando en este lab como vimos mas arriba)
+
 ![800](../Fotos/Pasted%20image%2020260108220715.png)
+
 Esto **sigue una sola instancia** de PowerShell (PID 9944) y muestra **todas sus acciones**.
 - PowerShell **no solo se ejecutó**
 - **Hizo varias acciones distintas**
@@ -378,7 +389,9 @@ Todo ligado al evento que venimos dando seguimiento
 `dns.question.name` → `Password Spray`, `Ngrok`, `pastesite.com`.[](https://www.elastic.co/docs/reference/ecs/ecs-dns)​
 `destination.ip` → `18.158.249.xx`, `104.47.xx`.[](https://www.elastic.co/guide/en/apm/server/7.5/exported-fields-ecs.html)​
 `file.name` / `file.path` → Scripts dumpados como `DomainPasswordSpray.ps1`.[](https://rootdse.org/posts/understanding-sysmon-events/)
+
 ![800](../Fotos/Pasted%20image%2020260108221742.png)
+
 - **Fila 1**: `powershell.exe` + **event.code 22** (Sysmon DNS query) + **Password Spray** → Consulta DNS a `18.158.249.xx` (Ngrok).
 - **Fila 3**: `powershell.exe` + **EXE file on disk** + `script dumped on disk` → **Dropper de malware** desde payload.[](https://rootdse.org/posts/understanding-sysmon-events/)​
 - **Fila 4**: `powershell.exe` + **EXE files on threat intel** + persistence → **Ejecutable en Threat Intel** (malware conocido) con **persistencia**. ⚠️
@@ -395,13 +408,19 @@ Nuevas columnas: Obtener información sobre la dirección IP de destino que acab
 `source.ip`
 `destination.ip`
 `destination.port`
+
 ![800](../Fotos/Pasted%20image%2020260108233840.png)
+
 Curiosamente, la actividad parece haberse extendido hasta el día siguiente. La razón de la terminación de la actividad no está clara... ¿Hubo algún cambio en la propiedad intelectual C2? ¿O simplemente se detuvo el ataque? Al inspeccionar las consultas DNS para "ngrok.io", encontramos que la IP devuelta () ha cambiado efectivamente. Ten en cuenta que el campo se añadió como columna.
 
 `dns.answers.data` Se agrega Columna
 `dns.question.name: *ngrok.io*` Se agrega Filtro
  *Verás cambio de IP C2* La IP recién descubierta también indica que las conexiones continuaron de forma constante durante los días siguientes
-![800](../Fotos/Pasted%20image%2020260108235009.png)     ![250](../Fotos/Pasted%20image%2020260108235144.png)
+
+![800](../Fotos/Pasted%20image%2020260108235009.png)   
+
+![250](../Fotos/Pasted%20image%2020260108235144.png)
+
 Por tanto, es evidente que existe una actividad sostenida de la red, y podemos deducir que el C2 ha sido accedido de forma continua.
 
 *Ahora, en cuanto al archivo ejecutable subido "default.exe" anterior – ¿alguna vez se ejecutó?*
@@ -416,7 +435,9 @@ FILTRO
 ```shell-session
 process.name:"default.exe"
 ```
+
 ![800](../Fotos/Pasted%20image%2020260108235611.png)
+
 De hecho, se ha ejecutado: podemos discernir al instante que el ejecutable inició consultas DNS para Ngrok y estableció conexiones con las direcciones IP C2. También subió dos archivos: "svchost.exe" y "SharpHound.exe". SharpHound es una herramienta reconocida para diagramar Active Directory e identificar rutas de ataque para escalar. En cuanto a svchost.exe, no estamos seguros: ¿es otro agente malicioso? El nombre implica que intenta imitar el archivo legítimo svchost, que forma parte del sistema operativo Windows.
 C:\Users\Public\SharpHound.exe **BloodHound collector**: Enumera AD (usuarios/grupos/permisos).
 C:\Users\bob\AppData\Local\Temp\svchost.exe **Malware disfrazado**: svchost legítimo está en System32. Este en Temp = **persistencia/escalada**.|
@@ -430,7 +451,9 @@ FILTRO /COLUMNA
 process.name:"SharpHound.exe"
 ```
 `process.args` Se agrega Columna
+
 ![800](../Fotos/Pasted%20image%2020260109014150.png)
+
 Sysmon ha marcado "default.exe" con un hash de archivo (campo) que coincide con el que aparece en el informe de Threat Intel. Esto nos lleva a cuestionar si este ejecutable ha sido detectado en otros dispositivos dentro del entorno. Hagamos una búsqueda amplia.
 
 FILTRO
@@ -440,12 +463,15 @@ process.hash.sha256:018d37cbd3878258c29db3bc3f2988b6ae688843801b9abc28e6151141ab
 En este momento tenemos las siguientes columnas 
 Para cumplir con lo que mencionamos en la descripción del paso anterior agregamos la columna:
 `host.hostname` Se agrega Columna
+
 ![800](../Fotos/Pasted%20image%2020260109014751.png)
+
 Resumido:  para ver si este ejecutable ha sido detectado en otros dispositivos dentro del entorno.
 Se han encontrado archivos con este valor hash en WS001 y PKI, lo que indica que el atacante también ha vulnerado al menos el servidor PKI. También parece que un archivo de puerta trasera ha sido colocado bajo el perfil del usuario "svc-sql1", lo que sugiere que la cuenta de este usuario probablemente está comprometida.
 
 
 ![800](../Fotos/Pasted%20image%2020260109015451.png)
+
 Ampliando la primera instancia de ejecución "default.exe" en PKI, observamos que el proceso principal era "PSEXESVC", un componente de PSExec de SysInternals – una herramienta a menudo utilizada para ejecutar comandos de forma remota, frecuentemente empleada para movimientos laterales en brechas de Active Directory.
 `process.parent.args` (proceso principal)
 `process.args` (proceso hijo)
@@ -459,13 +485,16 @@ FILTRO
 ```shell-session
 (event.code:4624 OR event.code:4625) AND winlog.event_data.LogonType:3 AND source.ip:192.168.28.130
 ```
+
 ![800](../Fotos/Pasted%20image%2020260109020053.png)
 
 ---
 **Reflexion**
 ¿Cómo se comprometió la contraseña de "svc-sql1"? La única explicación plausible según los datos disponibles hasta ahora es posiblemente el script PowerShell subido anteriormente, aparentemente diseñado para la Brutadura por Contraseña. Sabemos que esto se subió en WS001, así que podemos comprobar si hay intentos exitosos o fallidos de contraseña desde esa máquina, excluyendo los de Bob, el usuario de esa máquina (y la propia máquina).
 Los resultados son bastante intrigantes: dos intentos fallidos de conseguir la cuenta de administrador, aproximadamente en la época en que se detectó la actividad sospechosa inicial. Posteriormente, hubo numerosos intentos exitosos de inicio de sesión para "svc-sql1". Parece que intentaron descifrar la contraseña del administrador pero fracasaron. Sin embargo, dos días después, el día 28, observamos intentos exitosos con svc-sql1.
+
 ![Pasted image 20260109020412](../Fotos/Pasted%20image%2020260109020412.png)
+
 Información extra proporcionada de perplexity unicamente
 1. **Discover** → Pega query en **KQL bar**.
 2. **Añade columnas**: `winlog.event_data.TargetUserName`, `winlog.event_data.WorkstationName`.
@@ -508,6 +537,7 @@ Respuesta: PowerView (PowerSploit)
 Filtro: `event.code: 11 AND file.directory: "C:\\Users\\Public"`
 Filtro: `event.code: 11 and file.directory: "C:\\Users\\Public" and file.extension: "exe"`
 Respuesta: svc-sql1
+
 ![800](../Fotos/Pasted%20image%2020260110100631.png)
 
 `Hunt 2`: Crea una consulta KQL para buscar ["Ejecución automática de arranque o inicio de sesión: Claves de ejecución del registro / Carpeta de arranque".](https://attack.mitre.org/techniques/T1547/001/) Introduce el contenido del campo en el documento relacionado con la primera acción de persistencia basada en el registro como tu respuesta.`registry.value`
@@ -528,6 +558,7 @@ Respuesta: 	svc-sql1
 
 `event.code:4625 AND winlog.event_data.SubStatus:0xC0000072`
 La consulta KQL filtra los datos en Kibana para mostrar eventos que tienen el código de evento de Windows 4625 (intentos fallidos de inicio de sesión) y el valor SubStatus de 0xC0000072 para cuentas desabilitadas.
+
 ![Pasted image 20251220201308](../Fotos/Pasted%20image%2020251220201308.png)
 
 `event.code:4625 AND winlog.event_data.SubStatus:0xC0000072 AND @timestamp >= "2023-03-03T00:00:00.000Z" AND @timestamp <= "2023-03-06T23:59:59.999Z"`
@@ -537,14 +568,18 @@ Mediante esta consulta, los analistas SOC pueden identificar intentos fallidos d
 La consulta Kibana KQL filtra los datos en Kibana para mostrar eventos que tienen el código de evento de Windows 4625 (intentos fallidos de inicio de sesión) y donde el nombre de usuario comienza con "admin", como "admin", "administrator", "admin123", etc.
 
 `winlog.logon.type`
+
 ![Pasted image 20251220201449](../Fotos/Pasted%20image%2020251220201449.png)
 
 `group.name`
+
 ![Pasted image 20251220201846](../Fotos/Pasted%20image%2020251220201846.png)
 
 `NOT user.name: *$ AND winlog.channel.keyword: Security`
 - No se contabilicen registros no relacionados ya cuando hay filtros de por medio etc.
+
 ![Pasted image 20251220202642](../Fotos/Pasted%20image%2020251220202642.png)
+
 -----
 
 ![Pasted image 20251220200445](../Fotos/Pasted%20image%2020251220200445.png)
@@ -581,35 +616,46 @@ Usuario que inicio sesion
 ![Pasted image 20251220201344](../Fotos/Pasted%20image%2020251220201344.png)
 
 Aplicando Display Name
+
 ![Pasted image 20251220201201](../Fotos/Pasted%20image%2020251220201201.png)
 
 ----
 Filtros usados en Ejercicio 3 HTB
+
 ![Pasted image 20251220202130](../Fotos/Pasted%20image%2020251220202130.png)
 
 -----
 Que no muestre
+
 ![Pasted image 20251220201009](../Fotos/Pasted%20image%2020251220201009.png)
 
-![500](../Fotos/Pasted%20image%2020260110125724.png)    ![Pasted image 20260110125740](../Fotos/Pasted%20image%2020260110125740.png)
+![500](../Fotos/Pasted%20image%2020260110125724.png)    
+
+![Pasted image 20260110125740](../Fotos/Pasted%20image%2020260110125740.png)
 
 *Pregunta 1*
 Navega hasta http://[IP objetivo]:5601, haz clic en el interruptor de navegación lateral y luego en "Panel de control". Explora la visualización refinada que creamos o la visualización "Intentos fallidos de inicio de sesión [Todos los usuarios]", si está disponible, e introduce el número de inicios de sesión de la cuenta sql-svc1 como respuesta.
 Respuesta: 2
 # Intentos fallidos de inicio de session (Todos los usuarios)
 `user.name.keyword` y damos en `count of records`
+
 ![Pasted image 20260110142314](../Fotos/Pasted%20image%2020260110142314.png)
+
 Agregamos `host.hostname.keyword`
+
 ![Pasted image 20260110142816](../Fotos/Pasted%20image%2020260110142816.png)
+
 **Importante**
 `user.name.keyword` El nombre de usuario de las personas que inician sesión
 `host.hostname.keyword` La máquina en la que se produjo el intento de inicio de sesión.
 `count of records` El número de veces que ha ocurrido el evento
 
 Save and Return (sale en la esquina superior derecha de la foto anterior) : Resultado
+
 ![Pasted image 20260110143314](../Fotos/Pasted%20image%2020260110143314.png)
 
 Save : No olvidemos guardar también el panel de control. Podemos hacerlo simplemente haciendo clic en el botón "Guardar".
+
 ![Pasted image 20260110143436](../Fotos/Pasted%20image%2020260110143436.png)
 
 *Damos en edit para volver y hacer unas nuevas busquedas como veremos a continuacion abajo:*
@@ -617,16 +663,19 @@ Save : No olvidemos guardar también el panel de control. Podemos hacerlo simple
 `host.hostname.keyword`
 `winlog.logon.type.keyword` Tipo de loggin
 `count of records`
+
 ![Pasted image 20260110150048](../Fotos/Pasted%20image%2020260110150048.png)
 
 ```shell-session
 NOT user.name: *$ AND winlog.channel.keyword: Security
 ```
+
 ![Pasted image 20260110150258](../Fotos/Pasted%20image%2020260110150258.png)
 
 # Intentos fallidos de inicio de session (Usuarios deshabilitados)
 
 La única diferencia con la de *Todos los usuarios* es el filtro `winlog.event_Data.SubStatus: 0xc0000072`
+
 ![Pasted image 20260110162748](../Fotos/Pasted%20image%2020260110162748.png)
 
 *Pregunta 1*
@@ -650,9 +699,11 @@ Respuesta: `interactive`
 `user.name.keyword`
 `host.hostname.keyword`
 `related.ip.keyword` (Vendría a ser la maquina que inicio la conexión)
+
 ![Pasted image 20260110165502](../Fotos/Pasted%20image%2020260110165502.png)
 
 Confirmación RDP efectuado
+
 ![600](../Fotos/Pasted%20image%2020260110165830.png)
 
 
@@ -672,12 +723,19 @@ Confirmación RDP efectuado
 `host.hostname.keyword` Nombre del equipo donde ocurrió el evento.
 
 ![Pasted image 20260110174305](../Fotos/Pasted%20image%2020260110174305.png)
+
 ![Pasted image 20260110174322](../Fotos/Pasted%20image%2020260110174322.png)
 
 **FECHA** 
-![Pasted image 20260110174811](../Fotos/Pasted%20image%2020260110174811.png)    ![Pasted image 20260110174818](../Fotos/Pasted%20image%2020260110174818.png)    ![Pasted image 20260110174825](../Fotos/Pasted%20image%2020260110174825.png)  
+
+![Pasted image 20260110174811](../Fotos/Pasted%20image%2020260110174811.png)    
+
+![Pasted image 20260110174818](../Fotos/Pasted%20image%2020260110174818.png)    
+
+![Pasted image 20260110174825](../Fotos/Pasted%20image%2020260110174825.png)  
 
 Aquí volvimos al dashboard original y bajamos simplemente
+
 ![Pasted image 20260110191743](../Fotos/Pasted%20image%2020260110191743.png)
 
 *Pregunta 1*
@@ -692,6 +750,7 @@ Una visualización así podría revelar posibles ataques de fuerza bruta. Es imp
 Navega hasta http://[IP objetivo]:5601, haz clic en el interruptor de navegación lateral y luego en "Panel de control". Revisa la visualización "Intentos fallidos de inicio de sesión [Todos los usuarios]" del panel de control "SOC-Alerts". Elige una de las siguientes como respuesta: "Nada sospechoso", "Consulta con Operaciones de TI", "Escala a un analista de nivel 2/3"
 FILTRO: `event.action:"logon-failed" AND user.name:"sql-svc1"`
 RESPUESTA: Consulta con Operaciones de TI
+
 ![Pasted image 20260110201614](../Fotos/Pasted%20image%2020260110201614.png)
 
 
@@ -701,6 +760,7 @@ Parece que hay un incidente en el que el usuario "Anni" ha intentado autenticars
 Navega hasta http://[IP objetivo]:5601, haz clic en el interruptor de navegación lateral y luego en "Panel de control". Revisa la visualización "Intentos fallidos de inicio de sesión [Usuario deshabilitado]" del panel de control de "SOC-Alerts". Elige una de las siguientes como respuesta: "Nada sospechoso", "Consulta con Operaciones de TI", "Escala a un analista de nivel 2/3"
 FILTRO: `event.action:"logon-failed" AND user.name:"Anni"`
 RESPUESTA: Escala a un analista de nivel 2/3
+
 ![Pasted image 20260110201854](../Fotos/Pasted%20image%2020260110201854.png)
 
 `Visualization 3: Failed logon attempts (Admin users only)`
@@ -711,6 +771,7 @@ FILTRO: `event.action:"logon-failed" AND user.name:*admin*`
 RESPUESTA: Nothing suspicious
 Todos los eventos en PAWs / DCs  
 **Nada sospechoso**
+
 ![Pasted image 20260110202716](../Fotos/Pasted%20image%2020260110202716.png)
 
 `Visualization 4: RDP logon for service account`
@@ -725,7 +786,9 @@ No importa:
 - Si fue “solo una vez”
 - Si fue “para probar”
 **Siempre se escala**
+
 ![Pasted image 20260110203416](../Fotos/Pasted%20image%2020260110203416.png)
+
 ![Pasted image 20260110203406](../Fotos/Pasted%20image%2020260110203406.png)
 
 `Visualization 5: User added or removed from a local group`
@@ -734,6 +797,7 @@ Un administrador ha incorporado a una persona (que solo está representada por e
 Navega hasta http://[IP objetivo]:5601, haz clic en el interruptor de navegación lateral y luego en "Panel de control". Revisa la visualización "Usuario añadido o eliminado de un grupo local" en el panel de control de "SOC-Alerts". Elige una de las siguientes como respuesta: "Nada sospechoso", "Consulta con Operaciones de TI", "Escala a un analista de nivel 2/3"
 FILTRO: `group.name:"Administrators"`
 RESPUESTA: Consult with IT Operations
+
 ![Pasted image 20260110204131](../Fotos/Pasted%20image%2020260110204131.png)
 
 `Visualization 6: Admin logon not from PAW`
@@ -761,6 +825,7 @@ FILTRO: `winlog.event_data.LogonType:10 AND user.name:*admin*`
 RESPUESTA: Escalate to a Tier 2/3 analyst
 
 ![Pasted image 20260110211901](../Fotos/Pasted%20image%2020260110211901.png)
+
 # **Triad**
 # Triaging Process
 
@@ -810,6 +875,7 @@ Tiempo
 `event.code:4625 AND user.name:*admin*`
 
 ![Pasted image 20260317184905](../Fotos/Pasted%20image%2020260317184905.png)
+
 **Alertas**
 - A3 – Fuerza bruta genérica (FP/TP)
 - A4 – Ataque a cuenta admin (TP)

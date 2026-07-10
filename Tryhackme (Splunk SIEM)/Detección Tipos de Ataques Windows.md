@@ -27,123 +27,203 @@ BTLO Practice Labs
 [Blue Team Labs Online - Cyber Range](https://blueteamlabs.online/)
 
 stats
+
 ![500](../Fotos/Pasted%20image%2020260523125519.png)
+
 timechart
 chart
+
 ![700](../Fotos/Pasted%20image%2020260525102555.png)
+
 timewrap
 eval (calculations) fields+operators+functions
+
 ![500](../Fotos/Pasted%20image%2020260523133345.png)
+
 ![500](../Fotos/Pasted%20image%2020260524190240.png)
+
 ![Pasted image 20260524211221](../Fotos/Pasted%20image%2020260524211221.png)
 
 bin
 sort (-|+)
 rename
 Data normalization
+
 ![500](../Fotos/Pasted%20image%2020260524195622.png)
+
 validate
+
 ![500](../Fotos/Pasted%20image%2020260524205748.png)
 
 *Dentro de eval*
 searchmatch
+
 ![600](../Fotos/Pasted%20image%2020260524213723.png)
+
 cidrmatch
+
 ![600](../Fotos/Pasted%20image%2020260524215040.png)
+
 match
+
 ![600](../Fotos/Pasted%20image%2020260524215243.png)
+
 replace function
+
 ![600](../Fotos/Pasted%20image%2020260524230400.png)
+
 ![600](../Fotos/Pasted%20image%2020260524230557.png)
+
 ...
 fieldfortmat (utiliza las mismas funciones que las de eval)
 ejemplo sin fieldformat
+
 ![700](../Fotos/Pasted%20image%2020260525102120.png)
+
 ejemplo con fieldformat
+
 ![Pasted image 20260525102200](../Fotos/Pasted%20image%2020260525102200.png)
 
 fillnull (command)
+
 ![500](../Fotos/Pasted%20image%2020260525102343.png)
+
 example
+
 ![600](../Fotos/Pasted%20image%2020260525102436.png)
 
 example without fillnull
+
 ![700](../Fotos/Pasted%20image%2020260525102555.png)
+
 example with fillnull
+
 ![700](../Fotos/Pasted%20image%2020260525102731.png)
+
 example with fullnull + value
+
 ![700](../Fotos/Pasted%20image%2020260525102821.png)
 
 where (command - support eval expression's)
+
 ![600](../Fotos/Pasted%20image%2020260525102939.png)
+
 ![500](../Fotos/Pasted%20image%2020260525102951.png)
+
 ![600](../Fotos/Pasted%20image%2020260525103034.png)
+
 ![700](../Fotos/Pasted%20image%2020260525104317.png)
+
 ![600](../Fotos/Pasted%20image%2020260525104558.png)
+
 (no usar * ya que lo toma como matematico en cambio usar % como reemplazo)
+
 ![500](../Fotos/Pasted%20image%2020260525104715.png)
+
 where + isnull (Muéstrame solo las filas donde el campo `sum` está vacío o no existe.)
+
 ![700](../Fotos/Pasted%20image%2020260525105031.png)
+
 ![700](../Fotos/Pasted%20image%2020260525105051.png)
 
 appendpipe (va luego del comando stats)
+
 ![500](../Fotos/Pasted%20image%2020260525131209.png)
  
  ![800](../Fotos/Pasted%20image%2020260525132603.png)
+
  aqui agregamos un `as count` extra
+
  ![800](../Fotos/Pasted%20image%2020260525132820.png)
+
  +sort
+
 ![800](../Fotos/Pasted%20image%2020260525132856.png)
+
 ![800](../Fotos/Pasted%20image%2020260525132919.png)
+
 ![800](../Fotos/Pasted%20image%2020260525132935.png)
 
 Pueden haber campos username vacios por lo que hay que crear nuevos fields
- ![Pasted image 20260525133015](../Fotos/Pasted%20image%2020260525133015.png)
+
+![Pasted image 20260525133015](../Fotos/Pasted%20image%2020260525133015.png)
+
 ![Pasted image 20260525133132](../Fotos/Pasted%20image%2020260525133132.png)
+
 Resultado (especie de label) Estás resolviendo el problema de que algunos eventos no tienen `username`, entonces creas un valor alternativo para que la tabla se vea clara.
+
 ![Pasted image 20260525133148](../Fotos/Pasted%20image%2020260525133148.png)
 
 mas desarrollo de pipeline
+
 ![800](../Fotos/Pasted%20image%2020260525135200.png)
+
 mas desarrollo de pipeline
+
 ![Pasted image 20260525135232](../Fotos/Pasted%20image%2020260525135232.png)
 
 eventstats (command)
+
 ![500](../Fotos/Pasted%20image%2020260525143242.png)
+
 example
+
 ![600](../Fotos/Pasted%20image%2020260525143322.png)
 
 exercise 
+
 ![800](../Fotos/Pasted%20image%2020260525143709.png)
+
 ![400](../Fotos/Pasted%20image%2020260525143729.png)
+
 ![800](../Fotos/Pasted%20image%2020260525144017.png)
+
 - **`stats`** → resume/agrupa y **pierdes los eventos originales**.
 - **`eventstats`** → calcula estadísticas, **pero mantiene los eventos originales** y añade el resultado como un nuevo campo.
+
 ![800](../Fotos/Pasted%20image%2020260525151058.png)
+
 ![800](../Fotos/Pasted%20image%2020260525152140.png)
+
 ![500](../Fotos/Pasted%20image%2020260525152213.png)
+
 example 2
+
 ![500](../Fotos/Pasted%20image%2020260525152314.png)
 
 1 
+
 ![Pasted image 20260525161511](../Fotos/Pasted%20image%2020260525161511.png)
+
 2
+
 ![Pasted image 20260525161537](../Fotos/Pasted%20image%2020260525161537.png)
+
 3
+
 ![Pasted image 20260525161722](../Fotos/Pasted%20image%2020260525161722.png)
+
 4
+
 ![Pasted image 20260525161814](../Fotos/Pasted%20image%2020260525161814.png)
+
 5
+
 *strftime* (String Format Time - Convierte una fecha/hora a un formato legible.)
 `%A` = **nombre completo del día de la semana**
 |Fecha|Resultado|
 |2026-05-25|Monday|
 |2026-05-26|Tuesday|
 |2026-05-27|Wednesday|
+
 ![Pasted image 20260525161855](../Fotos/Pasted%20image%2020260525161855.png)
+
 6
+
 ![Pasted image 20260525162204](../Fotos/Pasted%20image%2020260525162204.png)
+
 7
+
 *tostring*
 `tostring(totalSales, "commas")`
 Convierte un número a **string (texto)** con separadores de miles.
@@ -167,45 +247,67 @@ significa:
 
 Antes `2500000`
 Despues $ + tostring `$2,500,000`
+
 ![Pasted image 20260525162245](../Fotos/Pasted%20image%2020260525162245.png)
 
 streamstats
+
 ![500](../Fotos/Pasted%20image%2020260525162920.png)
+
 ![650](../Fotos/Pasted%20image%2020260525163223.png)
 
 ![850](../Fotos/Pasted%20image%2020260525163408.png)
+
 Aqui se trata de enumerar intentos de alcanzar servidor FTP remoto ya que se indica que dentro de la organizacion no se esta pudiendo realizar esta operacion y piden un informe de los intentos por ejemplo
+
 ![1000](../Fotos/Pasted%20image%2020260525164124.png)
 
 xyseries (utiliza estadisticas para mostrarlos en tablas) lo mismo que hace chart y timecahrt pero aqui se procesan aun mas los datos
+
 ![Pasted image 20260525174654](../Fotos/Pasted%20image%2020260525174654.png)
+
 ![Pasted image 20260525175528](../Fotos/Pasted%20image%2020260525175528.png)
+
 ![500](../Fotos/Pasted%20image%2020260525175556.png)
+
 ![Pasted image 20260525180419](../Fotos/Pasted%20image%2020260525180419.png)
+
 ![Pasted image 20260525180428](../Fotos/Pasted%20image%2020260525180428.png)
 
 ![Pasted image 20260525180539](../Fotos/Pasted%20image%2020260525180539.png)
+
 ![Pasted image 20260525180549](../Fotos/Pasted%20image%2020260525180549.png)
 
 untable (**Convierte columnas en filas**.)
 `untable` **despivotea** una tabla.
 Convierte **columnas → filas**.
 Es básicamente el **opuesto de `chart` / `xyseries`**.
+
 ![500](../Fotos/Pasted%20image%2020260525181047.png)
+
 ![500](../Fotos/Pasted%20image%2020260525210915.png)
+
 ![Pasted image 20260525181417](../Fotos/Pasted%20image%2020260525181417.png)
+
 ![Pasted image 20260525181947](../Fotos/Pasted%20image%2020260525181947.png)
+
 ![Pasted image 20260525182422](../Fotos/Pasted%20image%2020260525182422.png)
 
 untable VS xyseries
+
 ![1100](../Fotos/Pasted%20image%2020260525201922.png)
 
 stats
+
 ![700](../Fotos/Pasted%20image%2020260525202206.png)
+
 chart x, y
+
 ![700](../Fotos/Pasted%20image%2020260525202231.png)
+
 stats + xyseries (same result that upper)
 es basicamente la primera columna es el x y bajo el x se aplican los multiples campos o resultados que podria tener el y en este caso status los cuales se pueden delimitar y cuantificar con count logicamente
+
 ![700](../Fotos/Pasted%20image%2020260525202355.png)
 
 Los códigos HTTP (`200`, `400`, `404`...) se transformaron en nombres de columnas.
@@ -226,53 +328,88 @@ Entonces:
 2
 ```
 MB.
+
 ![800](../Fotos/Pasted%20image%2020260525205227.png)
 
 round
+
 ![800](../Fotos/Pasted%20image%2020260525205547.png)
+
 more clean
+
 ![800](../Fotos/Pasted%20image%2020260525205617.png)
+
 `+ xyseries`
+
 ![800](../Fotos/Pasted%20image%2020260525205714.png)
 
 other explanation
+
 ![800](../Fotos/Pasted%20image%2020260525205745.png)
 
 explanation with chart 
 suma los valores de price como revenue y luego lanza x por product_name e y como clientip donde revenue esta contenido en la tabla
-![800](../Fotos/Pasted%20image%2020260525210011.png) ![72](../Fotos/Pasted%20image%2020260525210210.png)
+
+![800](../Fotos/Pasted%20image%2020260525210011.png) 
+
+![72](../Fotos/Pasted%20image%2020260525210210.png)
+
 userther=f (for delete the other column)
+
 ![800](../Fotos/Pasted%20image%2020260525210259.png)
+
 addtotals (adds a new column with title Total like a sum x product)
+
 ![800](../Fotos/Pasted%20image%2020260525210351.png)
+
 sort 5 total (por ordenar acendente to decending order x default minum to  more and with minum sign - we can order decending for more to minum values)
+
 ![800](../Fotos/Pasted%20image%2020260525210444.png)
+
 untable
+
 ![800](../Fotos/Pasted%20image%2020260525210657.png)
+
 xyseries (es como volver a dejarlo con chart)
+
 ![800](../Fotos/Pasted%20image%2020260525210947.png)
+
 aqui le agregamos addtotals y sort para algo mas especifico
+
 ![800](../Fotos/Pasted%20image%2020260525211045.png)
+
 
 | foreach
 ![Pasted image 20260526113928](../Fotos/Pasted%20image%2020260526113928.png)
+
 this is the same for host's
+
 ![Pasted image 20260526114053](../Fotos/Pasted%20image%2020260526114053.png)
+
 same result's
+
 ![Pasted image 20260526114009](../Fotos/Pasted%20image%2020260526114009.png)
 
 Esto que hacemos podria perfectamente hacerse con xyseries
+
 ![Pasted image 20260526114639](../Fotos/Pasted%20image%2020260526114639.png)
 
 Modifying Field values with | eval
+
 ![800](../Fotos/Pasted%20image%2020260526120302.png)
+
 ![800](../Fotos/Pasted%20image%2020260526120555.png)
 
 same expression form 1
+
 ![800](../Fotos/Pasted%20image%2020260526124227.png)
+
 same expression form 2
+
 ![800](../Fotos/Pasted%20image%2020260526124306.png)
+
 same expression form 3
+
 ![800](../Fotos/Pasted%20image%2020260526124925.png)
 
 ![800](../Fotos/Pasted%20image%2020260526125039.png)
@@ -284,17 +421,23 @@ same expression form 3
 Eval conversion functions
 tostring() (conversion de eval que utiliza 2 argumentos, primer argfumento es un valor numero y luego puede ser commas hex o duration (X, Y)) (para las commas el unico requerimiento es que el primer argumento tenga mas de 3 digitos) (hex permite pasar los valores numeros a hexadecimal) (duration es para pasar los valores numeros a formato d ehoras, minutos y segundos)
 tonumber()
+
 ![800](../Fotos/Pasted%20image%2020260526130642.png)
 
 uso de tostring + commas 
+
 ![900](../Fotos/Pasted%20image%2020260526130822.png)
+
 podemos hacer esto c on los otros dos fields mas que hemos creado con stats 
+
 ![800](../Fotos/Pasted%20image%2020260526130911.png)
+
 ![Pasted image 20260526131012](../Fotos/Pasted%20image%2020260526131012.png)
 
 ![500](../Fotos/Pasted%20image%2020260526131524.png)
 
 range = máximo − mínimo (esto sirve para saber cuanto duro algun evento)
+
 ![800](../Fotos/Pasted%20image%2020260526132022.png)
 
 ![600](../Fotos/Pasted%20image%2020260526134224.png)
@@ -307,13 +450,16 @@ Eval text function
 upper() (Convierte texto a **MAYÚSCULAS**.)
 lower() (Convierte texto a **minúsculas**.)
 substr() (Extrae una **subcadena** (parte de un texto).) **Ojo con esta**
+
 ![700](../Fotos/Pasted%20image%2020260526135419.png)
+
 ![900](../Fotos/Pasted%20image%2020260526140239.png)
 
 ![Pasted image 20260526141248](../Fotos/Pasted%20image%2020260526141248.png)
 
 Eval coalesce function
 coalesce () ("Usa el primer campo que tenga dato.") (La idea es **unificar / normalizar** dos posibles nombres de campo en **un solo campo común**.)
+
 ![500](../Fotos/Pasted%20image%2020260526141432.png)
 
 ![700](../Fotos/Pasted%20image%2020260526141453.png)
@@ -323,12 +469,15 @@ coalesce () ("Usa el primer campo que tenga dato.") (La idea es **unificar / nor
 **Creating knowledge objects**
 Field aliases
 tags:
+
 ![350](../Fotos/Pasted%20image%2020260526171008.png)
 
 calculated fields
 Los resultados de los comands eval pueden escribirse en campos nuevos o bien reemplazar los campos existentes 
 conversiond e bytes a megabits , veremos como hacer que splunk lo haga automaticamente
+
 ![Pasted image 20260526171556](../Fotos/Pasted%20image%2020260526171556.png)
+
 ```bash
 settings
 field
@@ -342,39 +491,64 @@ save
 
 Event Types
 first
+
 ![500](../Fotos/Pasted%20image%2020260526173737.png)
+
 second
+
 ![Pasted image 20260526173752](../Fotos/Pasted%20image%2020260526173752.png)
+
 thrird
+
 ![500](../Fotos/Pasted%20image%2020260526173813.png)
+
 four
+
 ![500](../Fotos/Pasted%20image%2020260526173725.png)
 
 build event types
+
 ![300](../Fotos/Pasted%20image%2020260526173954.png)
+
 ![300](../Fotos/Pasted%20image%2020260526174009.png)
+
 ![300](../Fotos/Pasted%20image%2020260526174027.png)
+
 ![300](../Fotos/Pasted%20image%2020260526174103.png)
+
 ![300](../Fotos/Pasted%20image%2020260526174130.png)
+
 ![300](../Fotos/Pasted%20image%2020260526174140.png)
 
 ![Pasted image 20260526174200](../Fotos/Pasted%20image%2020260526174200.png)
 
 ![Pasted image 20260526174209](../Fotos/Pasted%20image%2020260526174209.png)
+
 ![Pasted image 20260526174228](../Fotos/Pasted%20image%2020260526174228.png)
+
 ![600](../Fotos/Pasted%20image%2020260526174232.png)
 
 Macros
 settings / advancesearch
+
 ![300](../Fotos/Pasted%20image%2020260526180328.png)
+
 ![Pasted image 20260526180351](../Fotos/Pasted%20image%2020260526180351.png)
+
 save
+
 ![Pasted image 20260526180458](../Fotos/Pasted%20image%2020260526180458.png)
+
 ![500](../Fotos/Pasted%20image%2020260526180520.png)
+
 ![800](../Fotos/Pasted%20image%2020260526180526.png)
+
 ![Pasted image 20260526180648](../Fotos/Pasted%20image%2020260526180648.png)
+
 adding arguments
+
 ![700](../Fotos/Pasted%20image%2020260526180738.png)
+
 ![800](../Fotos/Pasted%20image%2020260526180803.png)
 
 workflow actions (create links to interact with external resources or narrow search)
@@ -382,12 +556,19 @@ GET POST
 settings
 fields
 workflow action (GET)
+
 ![395](../Fotos/Pasted%20image%2020260526181452.png)
-![400](../Fotos/Pasted%20image%2020260526181526.png) ![Pasted image 20260526181550](../Fotos/Pasted%20image%2020260526181550.png)
+
+![400](../Fotos/Pasted%20image%2020260526181526.png) 
+
+![Pasted image 20260526181550](../Fotos/Pasted%20image%2020260526181550.png)
+
 workflow action (POST)
+
 ![700](../Fotos/Pasted%20image%2020260526182731.png)
 
 Search Time Operations Sequence
+
 ![200](../Fotos/Pasted%20image%2020260526185529.png)
 
 Creating field extractions
@@ -399,15 +580,18 @@ settings
 fields
 field extractions
 open field extractor
+
 ![Pasted image 20260526230539](../Fotos/Pasted%20image%2020260526230539.png)
 
 FORMA 2
 al final de la columna de fields esta:
 extract new fields
+
 ![Pasted image 20260526230530](../Fotos/Pasted%20image%2020260526230530.png)
 
 FORMA 3 (La mas facil de extraer un campo)
 Desde el menu de event actions
+
 ![300](../Fotos/Pasted%20image%2020260526230613.png)
 
 
@@ -416,24 +600,66 @@ Desde el menu de event actions
 - ¿Qué usuario se comporta raro?
 - ¿Qué host hace cosas que no debería?
 - ¿Qué volumen es sospechoso?
+
 ![Pasted image 20260318224630](../Fotos/Pasted%20image%2020260318224630.png)
+
 ### RECONOCIMIENTO INICIAL
-![Pasted image 20260317131325](../Fotos/Pasted%20image%2020260317131325.png)   ![Pasted image 20260317131427](../Fotos/Pasted%20image%2020260317131427.png)   ![Pasted image 20260317131446](../Fotos/Pasted%20image%2020260317131446.png)
+
+![Pasted image 20260317131325](../Fotos/Pasted%20image%2020260317131325.png)   
+
+![Pasted image 20260317131427](../Fotos/Pasted%20image%2020260317131427.png)   
+
+![Pasted image 20260317131446](../Fotos/Pasted%20image%2020260317131446.png)
+
 ### DETECCIÓN DE ANOMALÍAS BÁSICAS
-![Pasted image 20260317131510](../Fotos/Pasted%20image%2020260317131510.png)   ![Pasted image 20260317131524](../Fotos/Pasted%20image%2020260317131524.png)   ![Pasted image 20260317131538](../Fotos/Pasted%20image%2020260317131538.png)
+
+![Pasted image 20260317131510](../Fotos/Pasted%20image%2020260317131510.png)   
+
+![Pasted image 20260317131524](../Fotos/Pasted%20image%2020260317131524.png)   
+
+![Pasted image 20260317131538](../Fotos/Pasted%20image%2020260317131538.png)
+
 *Revisar si hay enumeracion con ps1 programas descargados o powershell systeminfo.exe, etc*
+
 ### ACCOUNT ATTACKS
-![Pasted image 20260317131652](../Fotos/Pasted%20image%2020260317131652.png)   ![Pasted image 20260317131704](../Fotos/Pasted%20image%2020260317131704.png)
+
+![Pasted image 20260317131652](../Fotos/Pasted%20image%2020260317131652.png)   
+
+![Pasted image 20260317131704](../Fotos/Pasted%20image%2020260317131704.png)
+
 ### KERBEROS ATTACKS
-![Pasted image 20260317131735](../Fotos/Pasted%20image%2020260317131735.png)   ![Pasted image 20260317131746](../Fotos/Pasted%20image%2020260317131746.png)
+
+![Pasted image 20260317131735](../Fotos/Pasted%20image%2020260317131735.png)   
+
+![Pasted image 20260317131746](../Fotos/Pasted%20image%2020260317131746.png)
+
 ### LATERAL MOVEMENT
-![Pasted image 20260317131808](../Fotos/Pasted%20image%2020260317131808.png)   ![Pasted image 20260317131858](../Fotos/Pasted%20image%2020260317131858.png)   ![Pasted image 20260317131907](../Fotos/Pasted%20image%2020260317131907.png)
+
+![Pasted image 20260317131808](../Fotos/Pasted%20image%2020260317131808.png)   
+
+![Pasted image 20260317131858](../Fotos/Pasted%20image%2020260317131858.png)   
+
+![Pasted image 20260317131907](../Fotos/Pasted%20image%2020260317131907.png)
+
 ### DOMAIN DOMINATION
-![Pasted image 20260317131926](../Fotos/Pasted%20image%2020260317131926.png)   ![Pasted image 20260317131936](../Fotos/Pasted%20image%2020260317131936.png)
+
+![Pasted image 20260317131926](../Fotos/Pasted%20image%2020260317131926.png)   
+
+![Pasted image 20260317131936](../Fotos/Pasted%20image%2020260317131936.png)
+
 ### NETWORK / EXFILTRATION
-![Pasted image 20260317132005](../Fotos/Pasted%20image%2020260317132005.png)   ![Pasted image 20260317132011](../Fotos/Pasted%20image%2020260317132011.png)   ![Pasted image 20260317132022](../Fotos/Pasted%20image%2020260317132022.png)
+
+![Pasted image 20260317132005](../Fotos/Pasted%20image%2020260317132005.png)   
+
+![Pasted image 20260317132011](../Fotos/Pasted%20image%2020260317132011.png)   
+
+![Pasted image 20260317132022](../Fotos/Pasted%20image%2020260317132022.png)
+
 ### RANSOMWARE 
-![Pasted image 20260317132109](../Fotos/Pasted%20image%2020260317132109.png)   ![Pasted image 20260317132115](../Fotos/Pasted%20image%2020260317132115.png)
+
+![Pasted image 20260317132109](../Fotos/Pasted%20image%2020260317132109.png)   
+
+![Pasted image 20260317132115](../Fotos/Pasted%20image%2020260317132115.png)
 
 ## Consejos
 
@@ -464,10 +690,17 @@ Desde el menu de event actions
 ✔ Impacto (si existe)
 
 **Correcto:**
+
 ![Pasted image 20260317134618](../Fotos/Pasted%20image%2020260317134618.png)
 
 **Incorrecto:**
-![Pasted image 20260317134512](../Fotos/Pasted%20image%2020260317134512.png) ![Pasted image 20260317134506](../Fotos/Pasted%20image%2020260317134506.png) ![Pasted image 20260317134522](../Fotos/Pasted%20image%2020260317134522.png)
+
+![Pasted image 20260317134512](../Fotos/Pasted%20image%2020260317134512.png) 
+
+![Pasted image 20260317134506](../Fotos/Pasted%20image%2020260317134506.png) 
+
+![Pasted image 20260317134522](../Fotos/Pasted%20image%2020260317134522.png)
+
 # Resumen Conceptual
 
 ETW → motor interno de logging avanzado de Windows  
@@ -668,7 +901,11 @@ envía una prueba basada en ese hash.
 - Responda haciéndose pasar por otro equipo.
 - Capture hashes NTLM.
 
-![500](../Fotos/Pasted%20image%2020260302160805.png)     ![Pasted image 20260302160922](../Fotos/Pasted%20image%2020260302160922.png)   ![Pasted image 20260302163744](../Fotos/Pasted%20image%2020260302163744.png)
+![500](../Fotos/Pasted%20image%2020260302160805.png)     
+
+![Pasted image 20260302160922](../Fotos/Pasted%20image%2020260302160922.png)   
+
+![Pasted image 20260302163744](../Fotos/Pasted%20image%2020260302163744.png)
 
 ```shell
 index=main earliest=1690290078 latest=1690291207 SourceName=LLMNRDetection
@@ -702,9 +939,19 @@ Tu búsqueda usa eventos **DNS Query** de **Sysmon** específicamente **Sysmon E
 - acceso a file shares sospechosos
 - movimientos laterales SMB
 - resolución DNS previa a conexión
-![Pasted image 20260314135228](../Fotos/Pasted%20image%2020260314135228.png) ![Pasted image 20260314133904](../Fotos/Pasted%20image%2020260314133904.png)   ![Pasted image 20260314133919](../Fotos/Pasted%20image%2020260314133919.png)
 
-![Pasted image 20260314135533](../Fotos/Pasted%20image%2020260314135533.png)  ![477](../Fotos/Pasted%20image%2020260314135628.png)  ![Pasted image 20260314135339](../Fotos/Pasted%20image%2020260314135339.png)
+![Pasted image 20260314135228](../Fotos/Pasted%20image%2020260314135228.png) 
+
+![Pasted image 20260314133904](../Fotos/Pasted%20image%2020260314133904.png)   
+
+![Pasted image 20260314133919](../Fotos/Pasted%20image%2020260314133919.png)
+
+![Pasted image 20260314135533](../Fotos/Pasted%20image%2020260314135533.png)  
+
+![477](../Fotos/Pasted%20image%2020260314135628.png)  
+
+![Pasted image 20260314135339](../Fotos/Pasted%20image%2020260314135339.png)
+
 # Detección de kerberoasting/AS-REProasting   /   Detecting Kerberoasting/AS-REProasting
 
 ### Resumen
@@ -857,7 +1104,12 @@ index=main earliest=1690450374 latest=1690450483 EventCode=4648 OR (EventCode=47
 - `| dedup RecordNumber`: Elimina eventos duplicados basados en el campo.`RecordNumber`
 `| rex field=user "(?<username>[^@]+)"`: Extrae la porción del cuerpo usando una expresión regular y la almacena en un nuevo cuerpo llamado .`username`
 `| search username!=*$`: 
-![300](../Fotos/Pasted%20image%2020260302183125.png)   ![Pasted image 20260314145508](../Fotos/Pasted%20image%2020260314145508.png)   ![Pasted image 20260314145523](../Fotos/Pasted%20image%2020260314145523.png)
+
+![300](../Fotos/Pasted%20image%2020260302183125.png)   
+
+![Pasted image 20260314145508](../Fotos/Pasted%20image%2020260314145508.png)   
+
+![Pasted image 20260314145523](../Fotos/Pasted%20image%2020260314145523.png)
 
 **Detección de kerberoasting mediante transacciones - Solicitudes TGS**
 ```shell
@@ -882,7 +1134,9 @@ username: admin
 Elimina cuentas de máquina.
 Solo deja usuarios humanos.
 - `| transaction username keepevicted=true maxspan=5s endswith=(EventCode=4648) startswith=(EventCode=4769)`: Agrupa los eventos según el campo. La opción incluye eventos que no cumplen los criterios de la transacción. La opción establece la duración máxima de una transacción en 5 segundos. Las opciones y especifican que las transacciones deben comenzar con un evento con y terminar con un evento con .`transactions``username``keepevicted=true``maxspan=5s``endswith=(EventCode=4648)``startswith=(EventCode=4769)``EventCode 4769``EventCode 4648`
+
 ![350](../Fotos/Pasted%20image%2020260302190439.png)
+
 - `| where closed_txn=0 AND EventCode = 4769`: Filtra los resultados para incluir solo las transacciones que no están cerradas () y que tienen un de .`closed_txn=0``EventCode``4769`
 
 *Se intenta detectar:Abuso de ticket seguido de autenticación explícita*
@@ -972,10 +1226,17 @@ index=main source="WinEventLog:Security" EventCode=4624 Logon_Type=9 Logon_Proce
 `Network_Account_Name` : usuario cuyas credenciales se están utilizando
 `Logon_Type` : tipo de inicio de sesión. 9 = NewCredentials (Se usa normalmente con runas /netonly)
 `Logon_Process` : proceso de Windows que gestionó el login
-![500](../Fotos/Pasted%20image%2020260303125437.png)  ![500](../Fotos/Pasted%20image%2020260303125647.png)  ![300](../Fotos/Pasted%20image%2020260303125449.png)
+
+![500](../Fotos/Pasted%20image%2020260303125437.png)  
+
+![500](../Fotos/Pasted%20image%2020260303125647.png)  
+
+![300](../Fotos/Pasted%20image%2020260303125449.png)
 
 Ejemplo de significado: El equipo ORANGE creó un login tipo NewCredentials usando las credenciales de RAUL_LYNN mediante el proceso runas
+
 ![Pasted image 20260314154920](../Fotos/Pasted%20image%2020260314154920.png)
+
 # Detección de Pass the Ticket   /   Detecting Pass-the-Ticket
 
 ### Resumen
@@ -1013,8 +1274,15 @@ index=main earliest=1690392405 latest=1690451745 source="WinEventLog:Security" u
 `startswith=4768` : La transacción debe comenzar con solicitud de TGT
 `where closed_txn=0` : mostrar transacciones que NO se cerraron correctamente. 4768 ocurrió pero no hubo eventos posteriores.
 `search NOT user="*$@*"` :  Elimina formatos extraños de cuentas
-![Pasted image 20260314162743](../Fotos/Pasted%20image%2020260314162743.png)  ![Pasted image 20260314161457](../Fotos/Pasted%20image%2020260314161457.png)   ![Pasted image 20260314161514](../Fotos/Pasted%20image%2020260314161514.png)
+
+![Pasted image 20260314162743](../Fotos/Pasted%20image%2020260314162743.png)  
+
+![Pasted image 20260314161457](../Fotos/Pasted%20image%2020260314161457.png)   
+
+![Pasted image 20260314161514](../Fotos/Pasted%20image%2020260314161514.png)
+
 ![Pasted image 20260314162710](../Fotos/Pasted%20image%2020260314162710.png)
+
 # Detección de sobrepaso por el hash   /   Detecting Overpass-the-Hash
 
 ### Resumen
@@ -1049,6 +1317,7 @@ index=main earliest=1690450708 latest=1690451116 source="WinEventLog:Security" E
 ```
 
 ![380](../Fotos/Pasted%20image%2020260309224723.png)
+
 Como ya se ha mencionado, podemos mejorar la búsqueda anterior añadiendo acceso a memoria LSASS a la mezcla de la siguiente manera.
 
 **Las siguientes 2 querys sirven para detectar overpas the hash ya que correlaciona LSASS access Sysmon10 + Logon type 9 y la ultima utilizadae en el laboratorio tambien porque mira actividad kerberos anomala en el puerto 88.**
@@ -1083,7 +1352,11 @@ index=main earliest=0 latest=now source="XmlWinEventLog:Microsoft-Windows-Sysmon
 Pero excluye:
 `Image!=*lsass.exe`
 Porque normalmente **LSASS es quien habla con Kerberos**.
-![200](../Fotos/Pasted%20image%2020260314193301.png)   ![Pasted image 20260314193329](../Fotos/Pasted%20image%2020260314193329.png)
+
+![200](../Fotos/Pasted%20image%2020260314193301.png)   
+
+![Pasted image 20260314193329](../Fotos/Pasted%20image%2020260314193329.png)
+
 # Detectando Billetes Dorados/Billetes de Plata   /   Detecting Golden Tickets/Silver Tickets
 
 ### Resumen
@@ -1141,6 +1414,7 @@ acceso al servicio
 `| where closed_txn=0` :  `closed_txn` indica si la transacción se cerró correctamente. 1 transacción completa 0 transacción incompleta
 
 ![250](../Fotos/Pasted%20image%2020260315105146.png)
+
 #### Detección de tickets plata con splunk mediante correlación de usuario   /   Detectando Billetes Dorados/Billetes de Plata
 **detectar usuarios nuevos sospechosos Pero no detecta Golden Ticket directamente.**
 ```shell
@@ -1254,7 +1528,10 @@ Unconstrained → muy peligroso
 Constrained → limitado a servicios definidos
 ```
 
-![250](../Fotos/Pasted%20image%2020260310143730.png)   ![Pasted image 20260315112820](../Fotos/Pasted%20image%2020260315112820.png)
+![250](../Fotos/Pasted%20image%2020260310143730.png)   
+
+![Pasted image 20260315112820](../Fotos/Pasted%20image%2020260315112820.png)
+
 #### Detección de ataques de delegación sin restricciones
 *ESTE COMANDO BUSCA COMANDOS O EJECUCION DE RECONOCIMIENTO DE DELEGACION NO RESTRINGIDA QUE HACE EL ATACANTE*
 ```shell
@@ -1264,6 +1541,7 @@ index=main earliest=1690544538 latest=1690544540 source="WinEventLog:Microsoft-W
 `TrustedForDelegation` :  Este atributo existe en **Active Directory**. `TRUSTED_FOR_DELEGATION` **Unconstrained Delegation**
 `Message="*userAccountControl:1.2.840.113556.1.4.803:=524288*"` :  Esto es un **filtro LDAP avanzado**. 524288 = `TRUSTED_FOR_DELEGATION` que está dentro del atributo `userAccountControl`(Este es el flag). Esto también busca **delegación no restringida**.
 `4104` : powershell script block logging. Esto es muy importante porque permite ver **comandos maliciosos completos**.
+
 ![Pasted image 20260315112445](../Fotos/Pasted%20image%2020260315112445.png)
 
 #### Detección de ataques de delegación restringida - Aprovechando los registros de PowerShell
@@ -1273,7 +1551,9 @@ index=main earliest=1690544553 latest=1690562556 source="WinEventLog:Microsoft-W
 ```
 `4104` : Se refiere a la **ejecución de scripts o comandos de PowerShell**. Si quieres monitorear o investigar posibles ataques internos, **4104 es el evento clave** porque revela lo que PowerShell hizo en la máquina.
 Busca dentro del campo `Message` los eventos que contengan la cadena `msDS-AllowedToDelegateTo` es un **atributo de Active Directory** que indica a qué servicios puede delegar una cuenta o computadora sus credenciales. Es un indicador de **posibles vectores de ataque internos**, especialmente cuando la delegación no está correctamente restringida.
+
 ![600](../Fotos/Pasted%20image%2020260310161319.png)
+
 #### Detección de ataques de delegación restringida - Aprovechamiento de registros de Sysmon
 ```shell
 index=main earliest=1690562367 latest=1690562556 source="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" 
@@ -1287,7 +1567,12 @@ index=main earliest=1690562367 latest=1690562556 source="XmlWinEventLog:Microsof
 **Resumen:** Permite **ver qué procesos están relacionados con un mismo ID**, útil cuando quieres conectar eventos de red con el proceso que los generó.
 
 **Explicacion de `values(process) as process by process_id`** : “Para cada `process_id`, toma el nombre del proceso y cópialo a todos los eventos que tengan ese mismo `process_id`.”
-![Pasted image 20260315114637](../Fotos/Pasted%20image%2020260315114637.png)  ![Pasted image 20260315114645](../Fotos/Pasted%20image%2020260315114645.png)   ![Pasted image 20260315114705](../Fotos/Pasted%20image%2020260315114705.png)
+
+![Pasted image 20260315114637](../Fotos/Pasted%20image%2020260315114637.png)  
+
+![Pasted image 20260315114645](../Fotos/Pasted%20image%2020260315114645.png)   
+
+![Pasted image 20260315114705](../Fotos/Pasted%20image%2020260315114705.png)
 
 **Query utilizada en laboratorio**
 **→ detecta reconocimiento de Unconstrained Delegation en Active Directory mediante PowerShell.**
@@ -1354,7 +1639,10 @@ index=main earliest=1690544278 latest=1690544280 EventCode=4662 Message="*Replic
 | table _time, user, object_file_name, Object_Server, property
 ```
 `4662` : El evento indica que **un usuario o proceso accedió o modificó un objeto de Active Directory**.
-![Pasted image 20260315130758](../Fotos/Pasted%20image%2020260315130758.png)   ![Pasted image 20260315130814](../Fotos/Pasted%20image%2020260315130814.png)
+
+![Pasted image 20260315130758](../Fotos/Pasted%20image%2020260315130758.png)   
+
+![Pasted image 20260315130814](../Fotos/Pasted%20image%2020260315130814.png)
 
  **Identificar DCShadow, usando Splunk.**
  *Buscar modificación de cuentas de equipo*
@@ -1368,7 +1656,10 @@ Reemplazar XX
 `EventCode=4742` :**se modificó una cuenta de computadora** en Active Directory. Los **Domain Controllers son cuentas de computadora**, por lo que este evento es clave.
 `rex field=Message "(?P<gcspn>XX\/[a-zA-Z0-9\.\-\/]+)"` : Extrae un **SPN (Service Principal Name)** del mensaje. Ejemplo: GC/server.domain.local (**SPN Identificador de servicio usado por **Kerberos**.)
 `search gcspn=*` : > mostrar **solo eventos donde sí se encontró ese SPN**.
-![430](../Fotos/Pasted%20image%2020260315203144.png)    ![Pasted image 20260315205026](../Fotos/Pasted%20image%2020260315205026.png)
+
+![430](../Fotos/Pasted%20image%2020260315203144.png)    
+
+![Pasted image 20260315205026](../Fotos/Pasted%20image%2020260315205026.png)
 
 **Query utilizada en laboratorio (DCShadow)** 
  *Buscar modificación de cuentas de equipo*
@@ -1386,6 +1677,7 @@ index=main EventCode=4742
 *La query busca cambios en cuentas de computadora que agregan SPN de Domain Controller, lo que puede indicar que un atacante está intentando registrar un DC falso para ejecutar DCShadow*
 
 **Clave:**
+
 ![Pasted image 20260315222041](../Fotos/Pasted%20image%2020260315222041.png)
 
 ---
@@ -1536,7 +1828,10 @@ thresholds
 lógica de cálculo de tiempo  
 (streamstats, timedelta, avg)
 ```
-![300](../Fotos/Pasted%20image%2020260311142836.png)   ![Pasted image 20260316122252](../Fotos/Pasted%20image%2020260316122252.png)
+
+![300](../Fotos/Pasted%20image%2020260311142836.png)   
+
+![Pasted image 20260316122252](../Fotos/Pasted%20image%2020260316122252.png)
 
 **Query utilizada en laboratorio**
 *solo visualiza volumen de tráfico HTTP ES UTIL PORQUE en el beaconing se realiza princeipalmente al menos mediante http*
@@ -1547,6 +1842,7 @@ index=”cobaltstrike_beacon” sourcetype=”bro:http:json“
 | timechart span=1m count(event_count) as “Beaconing Events”
 ```
 Genera un **gráfico de eventos por minuto** para visualizar actividad de beaconing.
+
 ![600](../Fotos/Pasted%20image%2020260311145604.png)
 
 Que es lo mismo que lo de arriba pero sin renombrar el nombre del stat count:
@@ -1697,6 +1993,7 @@ success="false" request_type=AS
 `where count > 30` : Si hay **más de 30 intentos en 5 minutos** desde una misma IP: → probable **Kerberos brute force o password spraying**.
 
 Un nombre de usuario válido solicitará al servidor que se ajuste o generará un error como , indicando que se requiere preautenticación. Por otro lado, un nombre de usuario inválido aparecerá con un código de error Kerberos en el mensaje AS-REP (Authentication Service Response). Examinando las respuestas a sus mensajes AS-REQ, los adversarios pueden determinar rápidamente qué nombres de usuario son válidos en el sistema objetivo.`return a TGT``KRB5KDC_ERR_PREAUTH_REQUIRED``KRB5KDC_ERR_C_PRINCIPAL_UNKNOWN`*
+
 ![Pasted image 20260305104135](../Fotos/Pasted%20image%2020260305104135.png)
 
 **Querys utilizadas en laboratorio:**
@@ -1707,7 +2004,9 @@ o
 ```bash
 _index="kerberos_bruteforce" sourcetype="bro:kerberos:json" client="accrescent/windomain.local_"
 ```
+
 ![Pasted image 20260311180220](../Fotos/Pasted%20image%2020260311180220.png)
+
 → posible **Kerberos brute force** contra ese usuario. Cuenta del dominio que intenta autenticarse (usuario accrescent del dominio windomain.local)
 # Detección del kerberoasting   /   Detecting Kerberoasting
 
@@ -1796,7 +2095,12 @@ index="golden_ticket_attack" sourcetype="bro:kerberos:json"
 | stats values(client), values(request_type) as request_types, dc(request_type) as unique_request_types by _time, id.orig_h, id.resp_h 
 | where request_types=="TGS" AND unique_request_types==1
 ```
-![Pasted image 20260311182127](../Fotos/Pasted%20image%2020260311182127.png) ![Pasted image 20260311182155](../Fotos/Pasted%20image%2020260311182155.png) ![Pasted image 20260311182248](../Fotos/Pasted%20image%2020260311182248.png)
+
+![Pasted image 20260311182127](../Fotos/Pasted%20image%2020260311182127.png) 
+
+![Pasted image 20260311182155](../Fotos/Pasted%20image%2020260311182155.png) 
+
+![Pasted image 20260311182248](../Fotos/Pasted%20image%2020260311182248.png)
 
 ![Pasted image 20260311182521](../Fotos/Pasted%20image%2020260311182521.png)
 
@@ -1822,7 +2126,9 @@ index="golden_ticket_attack" sourcetype="bro:kerberos:json"
 Solo añadiste:
 `id.resp_p`
 `id.origin_p`
+
 ![Pasted image 20260316154545](../Fotos/Pasted%20image%2020260316154545.png)
+
 # Detectando Billetes Dorados   /   Detecting Golden Ticket
 
 ### Resumen
@@ -1981,6 +2287,7 @@ PSExec lateral movement = SMB + copiar binario + crear servicio remoto.
 ```
 
 *El atacante A tiene credenciales admin de la maquina B pero no esta en ese host por lo que mediante smb carga un payload para ejecucion remota de shell*
+
 ![Pasted image 20260316195848](../Fotos/Pasted%20image%2020260316195848.png)
 
 ---
@@ -2009,7 +2316,12 @@ index="change_service_config" sourcetype="bro:dce_rpc:json"
 - crear servicios
 - iniciar servicios
 - modificar servicios
-![250](../Fotos/Pasted%20image%2020260312134737.png)    ![400](../Fotos/Pasted%20image%2020260305133408.png)    ![Pasted image 20260312141635](../Fotos/Pasted%20image%2020260312141635.png)
+
+![250](../Fotos/Pasted%20image%2020260312134737.png)    
+
+![400](../Fotos/Pasted%20image%2020260305133408.png)    
+
+![Pasted image 20260312141635](../Fotos/Pasted%20image%2020260312141635.png)
 
 # Detección de Zerologon   /   Detecting Zerologon
 
@@ -2074,7 +2386,9 @@ Zerologon = abuso de Netlogon para autenticarse como Domain Controller
 usando valores criptográficos en cero.
 ```
 
-![Pasted image 20260317004138](../Fotos/Pasted%20image%2020260317004138.png)   ![350](../Fotos/Pasted%20image%2020260312153804.png)
+![Pasted image 20260317004138](../Fotos/Pasted%20image%2020260317004138.png)   
+
+![350](../Fotos/Pasted%20image%2020260312153804.png)
 
 ---
 **Identificar Zerologon, usando los registros Splunk y Zeek.**
@@ -2093,9 +2407,13 @@ index="zerologon" endpoint="netlogon" sourcetype="bro:dce_rpc:json"
 4. NetrServerPasswordSet2
 ```
 **Explicacion**
-![480](../Fotos/Pasted%20image%2020260312155728.png)   ![Herramienta de análisis de logs que muestra una consulta de búsqueda para eventos de Zerologon. Muestra dos eventos con columnas para tiempo, IP de origen, IP de respuesta, recuento, valores de operación y operaciones únicas.|900](https://cdn.services-k8s.prod.aws.htb.systems/content/modules/233/117.png)  
+
+![480](../Fotos/Pasted%20image%2020260312155728.png)   
+
+![Herramienta de análisis de logs que muestra una consulta de búsqueda para eventos de Zerologon. Muestra dos eventos con columnas para tiempo, IP de origen, IP de respuesta, recuento, valores de operación y operaciones únicas.|900](https://cdn.services-k8s.prod.aws.htb.systems/content/modules/233/117.png)  
 
 ![Pasted image 20260312162304](../Fotos/Pasted%20image%2020260312162304.png)
+
 `| where unique_operations >= 2 AND count>100` : La detección exige **dos condiciones**. (**1** Debe haber **al menos 2 tipos de llamadas Netlogon**. **2** Debe haber **más de 100 llamadas en 1 minuto**.)
 
 1️⃣ El atacante envía muchas solicitudes **Netlogon authentication** al **Domain Controller**.
@@ -2260,7 +2578,9 @@ index=dns_exf sourcetype="bro:dns:json"
 - `count` → cuenta cuántas veces aparece cada consulta DNS.
 - `by query` → agrupa el conteo por **nombre de dominio consultado**.
 Resultado: muestra **qué queries DNS se repiten más**.
+
 ![Pasted image 20260313230922](../Fotos/Pasted%20image%2020260313230922.png)
+
 # Detección de ransomware   /   Detecting Ransomware
 
 ### Resumen 
@@ -2338,7 +2658,9 @@ index="ransomware_new_file_extension_ctbl_ocker" sourcetype="bro:smb_files:json"
 | stats count by _time, id.orig_h, id.resp_p, source, new_file_name_extension 
 | where count>20 | sort -count
 ```
+
 ![180](../Fotos/Pasted%20image%2020260313233501.png)
+
 `rex field="name" "\.(?<new_file_name_extension>[^\.]*$)"` : Extrae la extensión del archivo **después del renombrado**. Ejemplo: document.txt.locked
 `rex field="prev_name" "\.(?<old_file_name_extension>[^\.]*$)"` : Extrae la extensión **antes del renombrado**.. Ejemplo: document.txt
 `stats count by _time id.orig_h id.resp_p name source old_file_name_extension new_file_name_extension` :  Agrupa eventos por: tiempo, host origen, archivo, extensión antigua, extensión nueva.
@@ -2346,6 +2668,7 @@ index="ransomware_new_file_extension_ctbl_ocker" sourcetype="bro:smb_files:json"
 `stats count by _time id.orig_h id.resp_p source new_file_name_extension` : Ahora cuenta **cuántos archivos se renombraron a la misma extensión**.
 `where count > 20` : mas de 20 archivos cambiaron a la misma extensión en 5 minutos.
 `sort -count` : Muestra primero **los casos con más actividad**.
+
 ![Herramienta de análisis de registros que muestra una consulta de búsqueda para eventos de ransomware con acción SMB::FILE_RENAME. Muestra un evento con columnas para tiempo, IP de origen, IP de respuesta, fuente, extensiones de nombre de archivo antiguas y nuevas, y conteo.|1100](https://cdn.services-k8s.prod.aws.htb.systems/content/modules/233/124.png)
 
 **Query utilizada en laboratorio**
@@ -2364,13 +2687,19 @@ index="ransomware_excessive_delete_aleta" sourcetype="bro:smb_files:json"
 `values(action)` : Lista de acciones observadas
 `distinct count` :  (número de tipos distintos de acción)
 `where uniq_actions == 2 AND count > 100` : **Condicion 1** : La alerta aparece cuando hay ambas acciones el File open y File delete **Condicion 2** : Hubo mas de 100 operaciones totales en 5 minutos
-![500](../Fotos/Pasted%20image%2020260314094453.png)   ![Pasted image 20260314095150](../Fotos/Pasted%20image%2020260314095150.png)   ![Pasted image 20260314095316](../Fotos/Pasted%20image%2020260314095316.png)
+
+![500](../Fotos/Pasted%20image%2020260314094453.png)   
+
+![Pasted image 20260314095150](../Fotos/Pasted%20image%2020260314095150.png)   
+
+![Pasted image 20260314095316](../Fotos/Pasted%20image%2020260314095316.png)
 
 **Nota:** Se pueden encontrar extensiones conocidas relacionadas con ransomware en los recursos a continuación.
 
 - [https://docs.google.com/spreadsheets/d/e/2PACX-1vRCVzG9JCzak3hNqqrVCTQQIzH0ty77BWiLEbDu-q9oxkhAamqnlYgtQ4gF85pF6j6g3GmQxivuvO1U/pubhtml](https://docs.google.com/spreadsheets/d/e/2PACX-1vRCVzG9JCzak3hNqqrVCTQQIzH0ty77BWiLEbDu-q9oxkhAamqnlYgtQ4gF85pF6j6g3GmQxivuvO1U/pubhtml)
 - [https://github.com/corelight/detect-ransomware-filenames](https://github.com/corelight/detect-ransomware-filenames)
 - [https://fsrm.experiant.ca/](https://fsrm.experiant.ca/)
+
 # Evaluacion de Habilidades
 
 **Query ejercicio 1**
@@ -2387,7 +2716,9 @@ index="empire" sourcetype="bro:http:json"
 | eval prcnt = (count/total)*100
 | where prcnt > 80 AND total > 10
 ```
+
 ![350](../Fotos/Pasted%20image%2020260314101941.png)
+
 `| where prcnt > 80 AND total > 10`
 Significa:
 "Mostrar solo comunicaciones donde más del 80% de los intervalos son iguales y hay más de 10 eventos"

@@ -29,7 +29,9 @@
 index=* (powershell OR sysmon)
 ("EncodedCommand" OR "-enc" OR "-NoP" OR "-W Hidden")
 ```            
+
 ![Pasted image 20260507125120](../Fotos/Pasted%20image%2020260507125120.png)
+
 Instalación del paquete malicioso `npm install healthchk-lib@1.0.1`
 NPM Package:
 Registry Path:
@@ -42,7 +44,9 @@ URL:
 ```bash
 index=* "postinstall"
 ```
+
 ![Pasted image 20260507125616](../Fotos/Pasted%20image%2020260507125616.png)
+
 **Execution (ejecución automática)**  
 → no requiere interacción del usuario
 
@@ -51,13 +55,18 @@ index=* "postinstall"
 index=* (powershell OR sysmon)
 ("EncodedCommand" OR "-enc" OR "-NoP" OR "-W Hidden")
 ```            
+
 ![Pasted image 20260507124508](../Fotos/Pasted%20image%2020260507124508.png)
+
 - **-NoP (NoProfile)** → no carga perfil → evita detección
 - **-W Hidden (Window Hidden)** → ejecución invisible
 - **-EncodedCommand** → comando en Base64 (ofuscación)
 Defense Evasion + Execution
+
 ![Pasted image 20260507140456](../Fotos/Pasted%20image%2020260507140456.png)
+
 ![Pasted image 20260507192738](../Fotos/Pasted%20image%2020260507192738.png)
+
 El script PowerShell decodificado implementa un loader que desencripta un payload mediante XOR y lo ejecuta en memoria usando `Invoke-Expression`, eliminando rastros para evadir detección.
 El malware se asegura de **volver a ejecutarse después del reboot**
 
@@ -74,11 +83,13 @@ Finalmente, se identificó persistencia mediante la modificación de claves de r
 Este comportamiento evidencia un ataque avanzado que combina técnicas de ejecución remota, evasión de defensas, persistencia y abuso de herramientas legítimas del sistema.
 
 ---
+
 ![Pasted image 20260507200118](../Fotos/Pasted%20image%2020260507200118.png)
 
 ![Pasted image 20260507195856](../Fotos/Pasted%20image%2020260507195856.png) 
 
 ![Pasted image 20260507195924](../Fotos/Pasted%20image%2020260507195924.png)
+
 ![Pasted image 20260507200014](../Fotos/Pasted%20image%2020260507200014.png)
 
 ![Pasted image 20260507200046](../Fotos/Pasted%20image%2020260507200046.png)
@@ -173,6 +184,8 @@ Se identificó una campaña de ataque que involucró la instalación de un paque
 El ataque utilizó un paquete NPM comprometido para infiltrarse en el sistema, ejecutando una serie de scripts de PowerShell para mantener la persistencia mediante modificaciones del registro. Este sofisticado vector de ataque subraya la vulnerabilidad de las cadenas de suministro y la necesidad de procesos rigurosos de validación de paquetes. Se recomiendan acciones inmediatas de remediación y monitorización para mitigar una mayor exposición y el posible movimiento lateral dentro de la red.
 
 ![Pasted image 20260507200210](../Fotos/Pasted%20image%2020260507200210.png)
+
 ![Pasted image 20260507200511](../Fotos/Pasted%20image%2020260507200511.png)
+
 ![Pasted image 20260507200518](../Fotos/Pasted%20image%2020260507200518.png)
 

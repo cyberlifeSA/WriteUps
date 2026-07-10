@@ -5,19 +5,28 @@
 
 *Pregunta 1*
 ¿Cuál es el camino completo del directorio de la app FIXIT?  
-![Pasted image 20260118132702](../Fotos/Pasted%20image%2020260118132702.png)   ![Pasted image 20260118134016](../Fotos/Pasted%20image%2020260118134016.png)
+
+![Pasted image 20260118132702](../Fotos/Pasted%20image%2020260118132702.png)   
+
+![Pasted image 20260118134016](../Fotos/Pasted%20image%2020260118134016.png)
+
 Respuesta: /opt/splunk/etc/apps/fixit
 
 *Pregunta 2*
 ¿Qué estrofa usaremos para definir el Límite de Evento en este caso de Evento de múltiples líneas?
 Filtro: `index=main Network-log`
+
 ![400](../Fotos/Pasted%20image%2020260118133603.png)
+
 ![400](../Fotos/Pasted%20image%2020260118133550.png)
+
 Respuesta: BREAK_ONLY_BEFORE
 
 *Pregunta 3*
-En el inputs.conf, ¿cuál es la ruta completa del script network-logs?  
+En el inputs.conf, ¿cuál es la ruta completa del script network-logs? 
+
 ![Pasted image 20260118133916](../Fotos/Pasted%20image%2020260118133916.png)
+
 Respuesta: /opt/splunk/etc/apps/fixit/bin/network-logs
 
 *Pregunta 4*
@@ -36,7 +45,9 @@ Respuesta: `\[Network-log\]`
 
 *Pregunta 5*
 ¿Cuál es el dominio capturado?
+
 ![Pasted image 20260118134700](../Fotos/Pasted%20image%2020260118134700.png)
+
 Respuesta: Cybertees.THM
 
 ---
@@ -60,8 +71,11 @@ Para estas 5 preguntas hay que crear un archivo y luego reiniciar el splunk se d
 Enlace: https://regex101.com/
 Paso a paso: [TryHackMe Room — Arregla. Soluciona el problema del análisis de registros y analiza... | por Haircutfish | Medio](https://medium.com/@haircutfish/tryhackme-room-fixit-b3df2c4dd313)
 La idea es que una vez creado el archivo como se menciona y reiniciado el splunk podemos filtrar por nuevos Fields y directamente encontrar la respuesta que buscamos.
+
 ![Pasted image 20260118140801](../Fotos/Pasted%20image%2020260118140801.png)
+
 **Otra forma, esto es clave:**
+
 ![Pasted image 20260118140938](../Fotos/Pasted%20image%2020260118140938.png)
 
 ---
@@ -71,11 +85,21 @@ Respuesta: fields.conf, props.conf, transforms.conf
 
 *Pregunta 11*
 ¿Cuáles son los dos principales países desde los que el usuario Robert intentó acceder al dominio? [Respuesta entre comas y en orden alfabético][Formato: Country1, Country2]  
-![Pasted image 20260118141344](../Fotos/Pasted%20image%2020260118141344.png)  ![Pasted image 20260118141350](../Fotos/Pasted%20image%2020260118141350.png)  ![Pasted image 20260118141406](../Fotos/Pasted%20image%2020260118141406.png)
+
+![Pasted image 20260118141344](../Fotos/Pasted%20image%2020260118141344.png)  
+
+![Pasted image 20260118141350](../Fotos/Pasted%20image%2020260118141350.png)  
+
+![Pasted image 20260118141406](../Fotos/Pasted%20image%2020260118141406.png)
+
 Respuesta: Canada, United States
 
 *Pregunta 12*
 ¿Qué usuario accedió a la secret-document.pdf en la web?
 Filtro: `index=main Domain=*secret-document.pdf`
-![Pasted image 20260118141948](../Fotos/Pasted%20image%2020260118141948.png)   ![Pasted image 20260118142030](../Fotos/Pasted%20image%2020260118142030.png)
+
+![Pasted image 20260118141948](../Fotos/Pasted%20image%2020260118141948.png)   
+
+![Pasted image 20260118142030](../Fotos/Pasted%20image%2020260118142030.png)
+
 Respuesta: Sarah Hall

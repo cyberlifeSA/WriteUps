@@ -36,86 +36,122 @@
 `http.url`
 `request.headers.User-Agent`
 `transactions.remote_address`
+
 ![Pasted image 20260111125518](../Fotos/Pasted%20image%2020260111125518.png)
+
 Cantidad inusual de tráfico desde una IP en un solo día.
 `transaction.remote_address`
 
 *Pregunta 1*
 ¿Cuál fue el primer escáner que el atacante ejecutó contra el servidor web?
+
 ![Pasted image 20260320130245](../Fotos/Pasted%20image%2020260320130245.png)
+
 ![Pasted image 20260111125632](../Fotos/Pasted%20image%2020260111125632.png)
+
 Respuesta: 10.0.2.15
+
 ![Pasted image 20260320130345](../Fotos/Pasted%20image%2020260320130345.png)
 
 `transaction.remote_address`
+
 ![Pasted image 20260320130431](../Fotos/Pasted%20image%2020260320130431.png)
 
 *Pregunta 2*
 ¿Cuál era el Agente de Usuario de la herramienta de enumeración de directorios que el atacante utilizaba en el servidor web?
+
 ![Pasted image 20260111125934](../Fotos/Pasted%20image%2020260111125934.png)
+
 Respuesta: Nmap scripting engine
-![Pasted image 20260320131506](../Fotos/Pasted%20image%2020260320131506.png) ![Pasted image 20260320131532](../Fotos/Pasted%20image%2020260320131532.png)
+
+![Pasted image 20260320131506](../Fotos/Pasted%20image%2020260320131506.png) 
+
+![Pasted image 20260320131532](../Fotos/Pasted%20image%2020260320131532.png)
 
 *Pregunta 3*
 ¿Cuál era el Agente de Usuario de la herramienta de enumeración de directorios que el atacante utilizaba en el servidor web?
 Aqui filtramos por el codigo de estado 404 ya que como es una iteracion probablemente tiene muchos errores
+
 ![Pasted image 20260111130530](../Fotos/Pasted%20image%2020260111130530.png)
+
 Respuesta: Mozilla/5.0 (Gobuster)
 
 *Pregunta 4*
 En total, ¿cuántos recursos solicitados en el servidor web no encontró el atacante?
+
 ![Pasted image 20260111130801](../Fotos/Pasted%20image%2020260111130801.png)
+
 Respuesta: 1867
 
 *Pregunta 5*
 ¿Cuál es la bandera bajo el directorio interesante que encontró el atacante?
 Editar el filtro response.status de 404 a 200
 Añade Mozilla/5.0 (Gobuster) al filtro haciendo clic en el signo + que obtenemos al pasar el cursor encima.
+
 ![Pasted image 20260111133428](../Fotos/Pasted%20image%2020260111133428.png)
+
 Respuesta: a76637b62ea99acda12f5859313f539a
 
 *Pregunta 6*
 ¿Qué página de inicio de sesión descubrió el atacante usando la herramienta de enumeración de directorios?
 Como no hemos encontrado ninguna página de inicio de sesión al filtrar usando 200,  podemos incluirla como excepción. También, obviamente el 404
 /admin-login.php
+
 ![Pasted image 20260111134213](../Fotos/Pasted%20image%2020260111134213.png)
+
 Respuesta: /admin-login.php
 
 *Pregunta 7*
 ¿Cuál era el agente de usuario de la herramienta de fuerza bruta que usó el atacante en el panel de administración?
+
 ![Pasted image 20260111135742](../Fotos/Pasted%20image%2020260111135742.png)
+
 Respuesta: Mozilla/4.0 (Hydra)
+
 ![Pasted image 20260320133951](../Fotos/Pasted%20image%2020260320133951.png)
 
 *Pregunta 8*
 ¿Qué combinación de nombre de usuario y contraseña usó el atacante para acceder a la página de administración?
 Conocemos el User-Agent de la herramienta de fuerza bruta, agrégalo al filtro. Como el atacante obtuvo acceso, sabemos que la respuesta no será 401,  así que añade eso al filtro.
+
 ![Pasted image 20260111162648](../Fotos/Pasted%20image%2020260111162648.png)
+
 ![Pasted image 20260111163218](../Fotos/Pasted%20image%2020260111163218.png)
+
 `request.headers.Authorization`
 Esta en base64: YWRtaW46dGh4MTEzOA==
 Respuesta: admin:thx1138
 
 *Pregunta 9*
 ¿Qué flag estaba incluido en el archivo que el atacante subió desde el directorio de administradores?
+
 ![Pasted image 20260111163805](../Fotos/Pasted%20image%2020260111163805.png)
+
 ![Pasted image 20260111163945](../Fotos/Pasted%20image%2020260111163945.png)
+
 ![Pasted image 20260111165156](../Fotos/Pasted%20image%2020260111165156.png)
+
 Respuesta: THM{ecb012e53a58818cbd17a924769ec447}
 
 *Pregunta 10*
 ¿Cuál fue el primer comando que ejecutó el atacante en la web shell?
 Buscar: easy-simple-php-webshell.php (este es el archivo subido que pudimos ver)
 Aqui ya podemos identificar la vuln es una web shell caragada en php confirmada no solo por el nombre.
+
 ![Pasted image 20260111165522](../Fotos/Pasted%20image%2020260111165522.png)
+
 Respuesta: whoami
 
 *Pregunta 11*
 ¿De qué ubicación de archivo en el servidor web extrajo el atacante las credenciales de la base de datos usando **la Inclusión Local de Archivos**?
 Usando la vista que teniamos y viendo el LFI
+
 ![Pasted image 20260111170741](../Fotos/Pasted%20image%2020260111170741.png)
+
 Segunda vista filtrando por URL
+
 ![Pasted image 20260111170809](../Fotos/Pasted%20image%2020260111170809.png)
+
 Respuesta: /etc/phpmyadmin/config-db.php
 
 *Pregunta 12*
@@ -124,17 +160,23 @@ Respuesta: /phpmyadmin/
 
 *Pregunta 13*
 ¿Cuál era el nombre de la base de datos que **exportó** el atacante?
+
 ![Pasted image 20260111173013](../Fotos/Pasted%20image%2020260111173013.png)
+
 Hubo muchas solicitudes de las que esperaba.  
 Pero pocos de ellos captaron mi atención.  
 **[export.php , import.php , tbl_replace.php]**
 Como nuestro atacante exportó la base de datos, vamos a **comprobarlo export.php** primero.
+
 ![Pasted image 20260111173448](../Fotos/Pasted%20image%2020260111173448.png)
+
 Respuesta: db=customer_credit_cards (customer_credit_cards)
 
 *Pregunta 14*
 ¿Qué bandera inserta el atacante en la base de datos?
+
 ![Pasted image 20260111175457](../Fotos/Pasted%20image%2020260111175457.png)
+
 Respuesta: /phpmyadmin/tbl_replace.php
 
 *URLENCODEADO:*
