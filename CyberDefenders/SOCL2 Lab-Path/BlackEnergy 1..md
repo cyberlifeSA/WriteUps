@@ -10,7 +10,7 @@ A partir de los datos:
 - `NtMajorVersion = 5`
 - `NtMinorVersion = 1` → Windows XP
 - `CSDVersion = 3` → SP3
-- `Is64Bit = False` → x86
+- `Is64Bit = False` → x86.
 
 Profile equivalente: WinXPSP3x86 (Al haber usado volatility 3 el CSDVersion lanza 3 pero en realidad es 2 ya que se espera usar Volatility2)
 
